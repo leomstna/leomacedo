@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>leomacedo.mp4 | Creative Editor & Motion Graphics</title>
-  <meta name="description" content="Portfolio de Hyo - Edição de vídeo brutal, Motion Graphics e VFX." />
+  <meta name="description" content="Portfolio de Leo Macedo - Edição de vídeo brutal, Motion Graphics e VFX." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -82,11 +82,7 @@
       font-family: var(--font-code); font-size: 0.95rem; color: var(--text-muted);
       margin-top: 30px; max-width: 450px; text-transform: uppercase; letter-spacing: 1px;
     }
-    .hero-bg-text {
-      position: absolute; bottom: -5%; right: -2%; font-size: 30vw;
-      font-family: var(--font-display); color: rgba(255,255,255,0.02);
-      z-index: 1; pointer-events: none;
-    }
+    /* Removido o .hero-bg-text daqui pois não será mais usado */
 
     /* ── SECTIONS ───────────────────────────────────────── */
     section { padding: var(--section-padding) 0; border-top: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 2;}
@@ -301,7 +297,7 @@
 
   <nav>
     <a href="#" class="logo">
-      <img src="💜-(1)_0001_Níveis-1.png" alt="HYO Creative Editor Logo" style="height: 100%; width: auto;">
+      <img src="💜-(1)_0001_Níveis-1.png" alt="Creative Editor Logo" style="height: 100%; width: auto;">
     </a>
     <ul class="nav-links">
       <li><a href="#work">WORK</a></li>
@@ -319,7 +315,7 @@
         <h1 class="hero-title">CREATIVE <span>EDITOR</span></h1>
         <p class="hero-sub">Motion Graphics, VFX & High Impact Video Editing. Leveling up visual storytelling through technical chaos.</p>
       </div>
-      <div class="hero-bg-text">HYO</div>
+      <!-- O 'HYO' invisível gigante foi removido daqui -->
     </section>
 
     <!-- WORK (WEBGL CAROUSEL) -->
@@ -446,8 +442,8 @@
     <footer id="contact">
       <div class="container">
         <span class="section-label">// CONNECT</span>
-        <a href="mailto:contato@hyo.design" class="contact-link">LET'S CREATE.</a>
-        <p style="margin-top: 80px; color: var(--text-muted); font-family: var(--font-code); font-size: 0.7rem; letter-spacing: 2px;">© 2026 HYO. DESIGNED FOR IMPACT.</p>
+        <a href="mailto:contato@leomacedo.design" class="contact-link">LET'S CREATE.</a>
+        <p style="margin-top: 80px; color: var(--text-muted); font-family: var(--font-code); font-size: 0.7rem; letter-spacing: 2px;">© 2026 LEO MACEDO. DESIGNED FOR IMPACT.</p>
       </div>
     </footer>
   </main>
@@ -482,9 +478,7 @@
         y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)'
       });
 
-      // ─────────────────────────────────────────────────────────────
-      // SMOOTH SCROLL CORRIGIDO PARA OS LINKS DO HEADER
-      // ─────────────────────────────────────────────────────────────
+      // SMOOTH SCROLL PARA OS LINKS DO HEADER
       document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault(); 
@@ -494,8 +488,6 @@
           const targetSection = document.querySelector(targetId);
           
           if (targetSection) {
-            // A section tem 140px de padding-top e o menu 100px.
-            // O '+ 20' empurra um pouco mais pra baixo e crava a distância perfeita.
             const elementPosition = targetSection.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset + 20; 
         
@@ -541,7 +533,7 @@
     });
   </script>
 
-  <!-- WEBGL: DARK VEIL BACKGROUND (Adaptado do React Bits) -->
+  <!-- WEBGL: DARK VEIL BACKGROUND -->
   <script type="module">
     import { Renderer, Program, Mesh, Triangle, Vec2 } from 'https://esm.sh/ogl';
 
