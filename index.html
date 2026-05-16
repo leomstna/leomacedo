@@ -82,7 +82,6 @@
       font-family: var(--font-code); font-size: 0.95rem; color: var(--text-muted);
       margin-top: 30px; max-width: 450px; text-transform: uppercase; letter-spacing: 1px;
     }
-    /* Removido o .hero-bg-text daqui pois não será mais usado */
 
     /* ── SECTIONS ───────────────────────────────────────── */
     section { padding: var(--section-padding) 0; border-top: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 2;}
@@ -315,7 +314,6 @@
         <h1 class="hero-title">CREATIVE <span>EDITOR</span></h1>
         <p class="hero-sub">Motion Graphics, VFX & High Impact Video Editing. Leveling up visual storytelling through technical chaos.</p>
       </div>
-      <!-- O 'HYO' invisível gigante foi removido daqui -->
     </section>
 
     <!-- WORK (WEBGL CAROUSEL) -->
@@ -478,7 +476,9 @@
         y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)'
       });
 
-      // SMOOTH SCROLL PARA OS LINKS DO HEADER
+      // ─────────────────────────────────────────────────────────────
+      // SMOOTH SCROLL CORRIGIDO PARA OS LINKS DO HEADER
+      // ─────────────────────────────────────────────────────────────
       document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault(); 
@@ -486,10 +486,25 @@
           const targetId = this.getAttribute('href');
           if (targetId === '#') return;
           const targetSection = document.querySelector(targetId);
+          const headerHeight = 100;
           
           if (targetSection) {
-            const elementPosition = targetSection.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset + 20; 
+            let offsetPosition = 0;
+
+            if (targetId === '#work') {
+              // Se clicar em WORK, centraliza exatamente o carrossel (escondendo o título acima)
+              const gallery = document.querySelector('.gallery-wrapper');
+              const elementPosition = gallery.getBoundingClientRect().top;
+              const availableHeight = window.innerHeight - headerHeight;
+              const centerOffset = (availableHeight - gallery.offsetHeight) / 2;
+              
+              // Calcula a posição perfeita para o carrossel ficar no meio da tela
+              offsetPosition = elementPosition + window.pageYOffset - headerHeight - (centerOffset > 0 ? centerOffset : 0);
+            } else {
+              // Para as outras seções, para logo abaixo do header
+              const elementPosition = targetSection.getBoundingClientRect().top;
+              offsetPosition = elementPosition + window.pageYOffset - headerHeight + 20; 
+            }
         
             window.scrollTo({
               top: offsetPosition,
@@ -533,7 +548,7 @@
     });
   </script>
 
-  <!-- WEBGL: DARK VEIL BACKGROUND -->
+  <!-- WEBGL: DARK VEIL BACKGROUND (Adaptado do React Bits) -->
   <script type="module">
     import { Renderer, Program, Mesh, Triangle, Vec2 } from 'https://esm.sh/ogl';
 
