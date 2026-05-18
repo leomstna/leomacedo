@@ -9,21 +9,18 @@
   <title>leomacedo.mp4 | Creative Editor & Motion Graphics</title>
   <meta name="description" content="Portfolio de Leo Macedo - Edição de vídeo, Motion Graphics e VFX." />
 
-  <!-- Fonts: Inter & Inter Tight (Based on Wan's Creator Lab) + Space Mono for terminal vibe -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&family=Space+Mono&display=swap" rel="stylesheet" />
   
-  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- GSAP & Plugins -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
   <style>
     /* ============================================
-       RESET & BASE (Wan's Theme)
+       RESET & BASE 
     ============================================ */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -34,7 +31,7 @@
     :root {
       --bg:        #111111;
       --bg-alt:    #1a1a1a;
-      --red:       #c026d3; /* Wan's purple/magenta accent */
+      --red:       #c026d3; 
       --red-dark:  #a21caf;
       --white:     #ffffff;
       --grey:      #888888;
@@ -305,11 +302,11 @@
     .section-sub { font-size: 1.1rem; color: var(--grey-light); line-height: 1.7; max-width: 600px; margin: 0 auto; }
 
     /* ============================================
-       WHAT YOU GET (SERVICES) - FIXED GRID
+       WHAT YOU GET (SERVICES) - AUTO GRID FIXED
     ============================================ */
     .deliverables-grid { 
       display: grid; 
-      grid-template-columns: repeat(3, 1fr); /* 3 COLUNAS FIXAS PARA EVITAR BUG DE TAMANHO */
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
       gap: 1.5rem; 
       margin-top: 3rem; 
     }
@@ -322,7 +319,7 @@
       transition: border-color 0.2s ease, transform 0.2s ease;
       display: flex;
       flex-direction: column;
-      height: 100%; /* Garante que todas as caixas fiquem do mesmo tamanho */
+      height: 100%; /* Fix: Cards da mesma altura */
     }
 
     .deliverable-card:hover { border-color: rgba(192, 38, 211, 0.4); transform: translateY(-5px); }
@@ -341,14 +338,17 @@
 
     .deliverable-icon i { color: var(--red); font-size: 1.3rem; }
     .deliverable-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: -0.02em; }
-    .deliverable-desc { font-size: 0.95rem; color: var(--grey-light); line-height: 1.6; }
+    .deliverable-desc { 
+      font-size: 0.95rem; color: var(--grey-light); line-height: 1.6; 
+      flex-grow: 1; /* Faz o texto preencher o espaço, empurrando igual */
+    }
 
     /* ============================================
-       SPECS GRID - FIXED GRID
+       SPECS GRID - AUTO GRID FIXED
     ============================================ */
     .specs-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 COLUNAS FIXAS PARA EVITAR BUG DE TAMANHO */
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
       gap: 2rem;
       margin-top: 4rem;
       border-top: 1px solid var(--border);
@@ -463,10 +463,6 @@
       .nav-links { display: none; }
       .menu-toggle { display: flex; }
       .gallery-wrapper { height: 55vh; min-height: 400px; }
-      
-      /* Ajusta os grids forçados para tablet */
-      .deliverables-grid { grid-template-columns: repeat(2, 1fr); }
-      .specs-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
@@ -479,7 +475,6 @@
       
       .section-header { margin-bottom: 2.5rem; }
       
-      /* Ajusta os grids forçados para mobile */
       .deliverables-grid { grid-template-columns: 1fr; gap: 1rem; }
       .deliverable-card { padding: 2rem 1.5rem; }
       .deliverable-title { font-size: 1.2rem; }
@@ -493,9 +488,6 @@
 </head>
 <body>
 
-  <!-- ============================================
-       NAV
-  ============================================ -->
   <nav>
     <div class="nav-inner">
       <a href="#" class="logo-wordmark" aria-label="leomacedo.mp4">
@@ -506,14 +498,12 @@
         <span class="logo-lab">.mp4</span>
       </a>
       
-      <!-- Desktop Nav -->
       <ul class="nav-links">
         <li><a href="#work" class="scroll-link">WORK</a></li>
         <li><a href="#about" class="scroll-link">SYSTEM</a></li>
         <li><a href="#contact" class="scroll-link">GET IN TOUCH</a></li>
       </ul>
 
-      <!-- Mobile Nav Toggle -->
       <div class="menu-toggle" id="mobile-menu-btn">
         <span></span>
         <span></span>
@@ -522,7 +512,6 @@
     </div>
   </nav>
 
-  <!-- Mobile Overlay Menu -->
   <div class="mobile-nav-overlay" id="mobile-nav">
     <ul class="mobile-nav-links">
       <li><a href="#work" class="scroll-link">WORK</a></li>
@@ -532,9 +521,6 @@
   </div>
 
   <main>
-    <!-- ============================================
-         HERO
-    ============================================ -->
     <section class="hero" id="hero">
       <div class="hero-inner">
         <span class="hero-eyebrow">The Creative Edge &mdash; System Online</span>
@@ -562,9 +548,6 @@
       </div>
     </section>
 
-    <!-- ============================================
-         WORK (WEBGL CAROUSEL)
-    ============================================ -->
     <section class="section section-alt" id="work" style="padding-bottom: 0;">
       <div class="section-inner-narrow">
         <div class="section-header">
@@ -579,9 +562,6 @@
       </div>
     </section>
 
-    <!-- ============================================
-         CAPACIDADES (TECH STACK)
-    ============================================ -->
     <section class="section" id="about">
       <div class="section-inner-narrow">
         <div class="section-header">
@@ -632,9 +612,6 @@
       </div>
     </section>
 
-    <!-- ============================================
-         FOOTER CTA
-    ============================================ -->
     <section class="footer-cta" id="contact">
       <div class="footer-cta-inner">
         <div class="section-label">Connect</div>
@@ -656,7 +633,6 @@
     </section>
   </main>
 
-  <!-- SCRIPTS GSAP E INTERAÇÕES -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
@@ -667,13 +643,16 @@
       gsap.from('.hero-cta-group', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.8 });
       gsap.from('.hero-social-proof', { opacity: 0, y: 15, duration: 1, ease: 'power3.out', delay: 1 });
 
-      // Animação de entrada dos textos das seções
+      // Animação blindada contra NodeLists Vazias
       gsap.utils.toArray('section').forEach(section => {
         if(section.id !== 'hero') {
-          gsap.from(section.querySelectorAll('.section-header *'), {
-            scrollTrigger: { trigger: section, start: 'top 80%' },
-            y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
-          });
+          const targets = section.querySelectorAll('.section-header *, .footer-cta-inner *');
+          if (targets.length > 0) {
+            gsap.from(targets, {
+              scrollTrigger: { trigger: section, start: 'top 80%' },
+              y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
+            });
+          }
         }
       });
 
@@ -749,7 +728,6 @@
     });
   </script>
 
-  <!-- WEBGL CIRCULAR GALLERY SCRIPT -->
   <script type="module">
     import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform, Raycast, Vec2 } from 'https://esm.sh/ogl';
 
@@ -1018,7 +996,7 @@
         }
         this.scale = this.screen.height / 1500;
         
-        const baseWidth = window.innerWidth <= 768 ? 600 : 1000; 
+        const baseWidth = window.innerWidth <= 768 ? 350 : 800; // Ajustado para não estourar no mobile
         this.plane.scale.x = (this.viewport.width * (baseWidth * this.scale)) / this.screen.width;
         this.plane.scale.y = this.plane.scale.x * (9 / 16); 
 
@@ -1190,7 +1168,6 @@
     }
 
     window.addEventListener('load', () => {
-      // 1. Inicia o Carrossel
       const container = document.getElementById('circular-gallery');
       const myProjects = [
         { image: 'airbnb.png', text: 'HYO - AIRBNB', link: 'https://www.youtube.com/watch?v=LJbFmxFRlDs' },
@@ -1206,7 +1183,7 @@
         items: myProjects,
         bend: 2,
         textColor: '#ffffff',
-        borderRadius: 8, // Wan's theme has slight rounding on media
+        borderRadius: 8, 
         font: '900 35px "Inter Tight", sans-serif',
         scrollSpeed: 2.5,
         scrollEase: 0.05
@@ -1215,3 +1192,7 @@
   </script>
 </body>
 </html>
+"""
+
+with open("index_leomacedo_final_fixed.html", "w", encoding="utf-8") as f:
+    f.write(html_content)}
