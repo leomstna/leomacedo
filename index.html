@@ -147,37 +147,39 @@
       --paper-3: #2a2a2a;
     }
 
-    .folder:not(.folder--click):hover { transform: translateY(-8px); }
-    .folder:not(.folder--click):hover .paper { transform: translate(-50%, 0%); }
-    .folder:not(.folder--click):hover .folder__front { transform: skew(15deg) scaleY(0.6); }
-    .folder:not(.folder--click):hover .right { transform: skew(-15deg) scaleY(0.6); }
+    /* Trava o hover apenas para dispositivos com ponteiro (mouse) */
+    @media (hover: hover) {
+      .folder:not(.folder--click):hover { transform: translateY(-8px); }
+      .folder:not(.folder--click):hover .paper { transform: translate(-50%, 0%); }
+      .folder:not(.folder--click):hover .folder__front { transform: skew(15deg) scaleY(0.6); }
+      .folder:not(.folder--click):hover .right { transform: skew(-15deg) scaleY(0.6); }
+
+      .folder.open .paper:nth-child(1):hover {
+        transform: translate(calc(-120% + var(--magnet-x, 0px)), calc(-70% + var(--magnet-y, 0px))) rotateZ(-15deg) scale(1.1);
+        z-index: 10;
+      }
+      .folder.open .paper:nth-child(2):hover {
+        transform: translate(calc(10% + var(--magnet-x, 0px)), calc(-70% + var(--magnet-y, 0px))) rotateZ(15deg) scale(1.1);
+        z-index: 10;
+      }
+      .folder.open .paper:nth-child(3):hover {
+        transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-100% + var(--magnet-y, 0px))) rotateZ(5deg) scale(1.1);
+        z-index: 10;
+      }
+    }
 
     .folder.open { transform: translateY(-8px); }
 
     .folder.open .paper:nth-child(1) {
       transform: translate(calc(-120% + var(--magnet-x, 0px)), calc(-70% + var(--magnet-y, 0px))) rotateZ(-15deg);
     }
-    .folder.open .paper:nth-child(1):hover {
-      transform: translate(calc(-120% + var(--magnet-x, 0px)), calc(-70% + var(--magnet-y, 0px))) rotateZ(-15deg) scale(1.1);
-      z-index: 10;
-    }
-
     .folder.open .paper:nth-child(2) {
       transform: translate(calc(10% + var(--magnet-x, 0px)), calc(-70% + var(--magnet-y, 0px))) rotateZ(15deg);
       height: 80%;
     }
-    .folder.open .paper:nth-child(2):hover {
-      transform: translate(calc(10% + var(--magnet-x, 0px)), calc(-70% + var(--magnet-y, 0px))) rotateZ(15deg) scale(1.1);
-      z-index: 10;
-    }
-
     .folder.open .paper:nth-child(3) {
       transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-100% + var(--magnet-y, 0px))) rotateZ(5deg);
       height: 80%;
-    }
-    .folder.open .paper:nth-child(3):hover {
-      transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-100% + var(--magnet-y, 0px))) rotateZ(5deg) scale(1.1);
-      z-index: 10;
     }
 
     .folder.open .folder__front { transform: skew(15deg) scaleY(0.6); }
@@ -299,15 +301,14 @@
     /* ── MEDIA QUERIES (MOBILE FIXES) ────────────────────── */
     @media (max-width: 992px) {
       :root {
-        --section-padding: 80px; /* Reduz espaço vazio entre seções */
+        --section-padding: 80px; 
       }
       .container { width: 90%; }
       .nav-links { display: none; }
-      .menu-toggle { display: flex; } /* Mostra hamburguer */
+      .menu-toggle { display: flex; } 
       
       .gallery-wrapper { height: 50vh; min-height: 400px; }
       
-      /* Ajuste nas pastas pra não quebrar a tela */
       .folders-grid { grid-template-columns: 1fr; gap: 50px; margin-top: 40px; }
       .folder-wrapper { transform: scale(1.15); margin: 30px 0; } 
       
@@ -511,9 +512,7 @@
         y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)'
       });
 
-      // ─────────────────────────────────────────────────────────────
       // LÓGICA DO MENU MOBILE
-      // ─────────────────────────────────────────────────────────────
       const mobBtn = document.getElementById('mobile-menu-btn');
       const mobNav = document.getElementById('mobile-nav');
       const bar1 = document.querySelector('.bar1');
@@ -522,7 +521,6 @@
 
       function toggleMenu() {
         mobNav.classList.toggle('active');
-        // Animação brutal do hamburguer
         if (mobNav.classList.contains('active')) {
           bar1.style.transform = 'translateY(8px) rotate(45deg)';
           bar2.style.opacity = '0';
@@ -536,15 +534,13 @@
 
       mobBtn.addEventListener('click', toggleMenu);
 
-      // ─────────────────────────────────────────────────────────────
-      // SMOOTH SCROLL PARA DESKTOP E MOBILE
-      // ─────────────────────────────────────────────────────────────
+      // SMOOTH SCROLL
       document.querySelectorAll('.scroll-link').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault(); 
           
           if(window.innerWidth <= 992 && mobNav.classList.contains('active')) {
-            toggleMenu(); // Fecha o menu se tiver no mobile
+            toggleMenu(); 
           }
 
           const targetId = this.getAttribute('href');
@@ -575,9 +571,7 @@
         });
       });
 
-      // ─────────────────────────────────────────────────────────────
       // PASTAS (MAGNETIC & ACCORDION)
-      // ─────────────────────────────────────────────────────────────
       const folders = document.querySelectorAll('.folder');
 
       folders.forEach(folder => {
@@ -594,7 +588,6 @@
         papers.forEach((paper) => {
           paper.addEventListener('mousemove', (e) => {
             if (!folder.classList.contains('open')) return;
-            // Desativa efeito magnético em tela pequena porque touch não tem hover real
             if(window.innerWidth <= 992) return; 
 
             const rect = paper.getBoundingClientRect();
@@ -809,6 +802,10 @@
       }
       createMesh() {
         const { texture, width, height } = createTextTextureGal(this.gl, this.text, this.font, this.textColor);
+        
+        this.texWidth = width;
+        this.texHeight = height;
+        
         const geometry = new GalPlane(this.gl);
         const program = new GalProgram(this.gl, {
           vertex: `
@@ -1005,10 +1002,19 @@
         this.plane.scale.x = (this.viewport.width * (baseWidth * this.scale)) / this.screen.width;
         this.plane.scale.y = this.plane.scale.x * (9 / 16); 
         this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
+        
         this.padding = this.plane.scale.x * 0.1; 
         this.width = this.plane.scale.x + this.padding;
         this.widthTotal = this.width * this.length;
         this.x = this.width * this.index;
+
+        if (this.title && this.title.mesh) {
+          const aspect = this.title.texWidth / this.title.texHeight;
+          const textHeight = this.plane.scale.y * 0.15;
+          const textWidth = textHeight * aspect;
+          this.title.mesh.scale.set(textWidth, textHeight, 1);
+          this.title.mesh.position.y = this.plane.scale.y * 0.5 + textHeight * 0.5 + 0.05;
+        }
       }
     }
 
