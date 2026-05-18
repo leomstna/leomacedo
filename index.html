@@ -9,10 +9,10 @@
   <title>leomacedo.mp4 | Creative Editor & Motion Graphics</title>
   <meta name="description" content="Portfolio de Leo Macedo - Edição de vídeo, Motion Graphics e VFX." />
 
-  <!-- Fonts: Inter & Inter Tight (Wan's Creator Lab Base) -->
+  <!-- Fonts: Inter & Inter Tight (Based on Wan's Creator Lab) + Space Mono for terminal vibe -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&family=Space+Mono&display=swap" rel="stylesheet" />
   
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -23,7 +23,7 @@
 
   <style>
     /* ============================================
-       RESET & BASE 
+       RESET & BASE (Wan's Theme)
     ============================================ */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -32,25 +32,27 @@
     }
 
     :root {
-      --bg:        #080808;
-      --bg-alt:    #111111;
+      --bg:        #111111;
+      --bg-alt:    #1a1a1a;
       --red:       #c026d3; /* Wan's purple/magenta accent */
       --red-dark:  #a21caf;
       --white:     #ffffff;
       --grey:      #888888;
-      --grey-light:#cccccc;
-      --border:    #222222;
+      --grey-light:#bbbbbb;
+      --border:    #2a2a2a;
+      --charcoal:  #2b2b2b;
+      --font-code: 'Space Mono', monospace;
     }
 
     html {
       scroll-behavior: smooth;
       font-size: 16px;
-      background: var(--bg);
+      background: var(--bg) !important;
     }
 
     body {
-      background: var(--bg);
-      color: var(--white);
+      background: var(--bg) !important;
+      color: var(--white) !important;
       font-family: 'Inter', system-ui, sans-serif;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -62,42 +64,48 @@
     img { max-width: 100%; display: block; }
 
     /* ============================================
-       TYPOGRAPHY
+       INTER TIGHT — HEADINGS, LABELS, BUTTONS
     ============================================ */
     h1, h2, h3, h4, h5, h6,
     .hero-eyebrow,
     .section-label,
     .deliverable-title,
-    .btn,
-    .nav-links a {
+    .btn {
       font-family: 'Inter Tight', 'Inter', system-ui, sans-serif;
     }
 
     /* ── SCROLLBAR ──────────────────────────────────────── */
-    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--red); }
+    ::-webkit-scrollbar-thumb { background: var(--red); }
 
     /* ============================================
-       LOGO
+       LOGO WORDMARK
     ============================================ */
     .logo-wordmark {
       display: inline-flex;
       align-items: baseline;
-      gap: 0.1em;
-      font-family: 'Inter Tight', sans-serif;
+      gap: 0.18em;
+      font-family: 'Inter', sans-serif;
       font-weight: 900;
       line-height: 1;
-      letter-spacing: -0.04em;
-      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      font-size: 1.5rem;
       white-space: nowrap;
       z-index: 1001;
       position: relative;
     }
 
-    .logo-wans { color: var(--white); font-weight: 900; }
-    .logo-lab { color: var(--red); font-weight: 900; }
+    .logo-wans { color: #888; font-style: italic; font-weight: 900; }
+    .logo-creator { display: inline-flex; align-items: baseline; font-weight: 900; }
+    .logo-c { color: var(--red); }
+    .logo-r1 { color: #f97316; }
+    .logo-e { color: #22c55e; }
+    .logo-a { color: #3b82f6; }
+    .logo-t { color: #a855f7; }
+    .logo-o { color: #eab308; }
+    .logo-r2 { color: var(--red); }
+    .logo-lab { color: #888; font-weight: 900; display: inline-flex; align-items: baseline; gap: 0.1em; }
 
     /* ============================================
        NAV
@@ -108,10 +116,9 @@
       left: 0;
       width: 100vw;
       z-index: 1000;
-      background: rgba(8, 8, 8, 0.85);
+      background: rgba(17, 17, 17, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      transition: transform 0.3s ease;
     }
 
     .nav-inner {
@@ -125,63 +132,65 @@
 
     .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
     .nav-links a.scroll-link { 
-      color: var(--grey-light); font-weight: 700; text-transform: uppercase; 
-      font-size: 0.85rem; letter-spacing: 1px; transition: color 0.3s;
+      color: #fff; font-weight: 600; text-transform: uppercase; 
+      font-size: 0.85rem; letter-spacing: 2px; transition: color 0.3s;
     }
-    .nav-links a.scroll-link:hover { color: var(--white); }
+    .nav-links a.scroll-link:hover { color: var(--red); }
 
     .btn {
       display: inline-block;
-      padding: 0.75rem 1.8rem;
-      border-radius: 4px;
-      font-weight: 800;
-      font-size: 0.95rem;
+      padding: 0.65rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: all 0.2s ease;
       border: none;
       text-align: center;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       text-transform: uppercase;
     }
 
     .btn-red { background: var(--red); color: var(--white); }
-    .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(192, 38, 211, 0.4); }
+    .btn-red:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .btn-lg { padding: 1rem 2.2rem; font-size: 1.05rem; border-radius: 8px; }
+    .btn-xl { padding: 1.1rem 2.6rem; font-size: 1.1rem; border-radius: 8px; }
 
     /* ── MOBILE MENU TOGGLE ─────────────────────────────── */
     .menu-toggle {
       display: none;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       cursor: pointer;
       z-index: 1001;
     }
     .menu-toggle span {
-      width: 24px; height: 2px; background: var(--white); transition: 0.3s ease;
+      width: 30px; height: 2px; background: #fff; transition: 0.3s ease;
     }
-    .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--red); }
+    .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); background: var(--red); }
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--red); }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background: var(--red); }
 
     .mobile-nav-overlay {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(8, 8, 8, 0.98); z-index: 999;
+      background: rgba(17, 17, 17, 0.98); z-index: 999;
       display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
       backdrop-filter: blur(15px);
     }
     .mobile-nav-overlay.active { opacity: 1; pointer-events: all; }
-    .mobile-nav-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 30px; }
+    .mobile-nav-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 40px; }
     .mobile-nav-links a {
-      color: var(--grey-light); font-family: 'Inter Tight', sans-serif; font-size: 2.5rem; 
-      font-weight: 900; text-transform: uppercase; transition: 0.3s; letter-spacing: -0.02em;
+      color: #fff; font-family: 'Inter Tight', sans-serif; font-size: 3rem; 
+      font-weight: 900; text-transform: uppercase; transition: 0.3s;
     }
-    .mobile-nav-links a:hover { color: var(--white); }
+    .mobile-nav-links a:hover { color: var(--red); }
 
     /* ============================================
        HERO
     ============================================ */
     .hero {
-      padding: 12rem 2rem 6rem;
+      padding: 10rem 2rem 5rem;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -191,16 +200,15 @@
       justify-content: center;
     }
 
-    /* Glow effect behind hero */
     .hero::before {
       content: '';
       position: absolute;
-      top: -20%;
+      top: -100px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80vw;
-      height: 80vh;
-      background: radial-gradient(circle, rgba(192, 38, 211, 0.15) 0%, transparent 60%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(192, 38, 211, 0.15) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -209,44 +217,66 @@
 
     .hero-eyebrow {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--grey-light);
+      background: rgba(192, 38, 211, 0.12);
+      border: 1px solid rgba(192, 38, 211, 0.3);
+      color: var(--red);
       font-size: 0.8rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 0.5rem 1.2rem;
+      padding: 0.4rem 1rem;
       border-radius: 100px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
     }
 
     .hero-headline {
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-size: clamp(3rem, 7vw, 5.5rem);
       font-weight: 900;
       line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.4rem;
       text-transform: uppercase;
     }
 
     .hero-headline .highlight { color: var(--red); }
 
+    /* FIX: Removido as formatações conflitantes do hero-sub */
     .hero-sub {
       font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--grey);
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.6;
-      font-weight: 500;
+      color: var(--grey-light);
+      max-width: 640px;
+      margin: 0 auto 2.4rem;
+      line-height: 1.7;
     }
 
     .hero-cta-group { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
 
+    /* FIX: Adicionado CSS para alinhar perfeitamente o Social Proof e os dots */
+    .hero-social-proof { 
+      display: flex; 
+      flex-wrap: wrap;
+      justify-content: center; 
+      align-items: center; 
+      gap: 1.2rem; 
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      color: var(--grey);
+      margin-top: 2.5rem;
+      text-transform: uppercase;
+    }
+    
+    .hero-social-proof .dot {
+      width: 4px;
+      height: 4px;
+      background-color: var(--red);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
     /* ============================================
        SECTION UTILITY
     ============================================ */
-    .section { padding: 8rem 2rem; position: relative; z-index: 2; }
+    .section { padding: 6rem 2rem; position: relative; z-index: 2; }
     .section-alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .section-inner { max-width: 1400px; margin: 0 auto; }
     .section-inner-narrow { max-width: 1100px; margin: 0 auto; }
@@ -254,9 +284,9 @@
     .section-header { text-align: center; margin-bottom: 4rem; }
 
     .section-label {
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--red);
       margin-bottom: 1rem;
@@ -264,7 +294,7 @@
     }
 
     .section-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1.1;
@@ -274,45 +304,78 @@
     
     .section-title .highlight { color: var(--red); }
 
-    .section-sub { font-size: 1.1rem; color: var(--grey); line-height: 1.6; max-width: 500px; margin: 0 auto; }
+    .section-sub { font-size: 1.1rem; color: var(--grey-light); line-height: 1.7; max-width: 600px; margin: 0 auto; }
 
     /* ============================================
-       SERVICES (WHAT YOU GET)
+       WHAT YOU GET (SERVICES)
     ============================================ */
-    .deliverables-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-      gap: 1.5rem; 
-    }
+    .deliverables-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
 
     .deliverable-card {
-      background: var(--bg-alt);
+      background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 2.5rem 2rem;
-      transition: all 0.3s ease;
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
-    .deliverable-card:hover { 
-      border-color: var(--red); 
-      background: rgba(192, 38, 211, 0.03);
-    }
+    .deliverable-card:hover { border-color: rgba(192, 38, 211, 0.4); transform: translateY(-5px); }
 
     .deliverable-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
+      width: 50px;
+      height: 50px;
+      background: rgba(192, 38, 211, 0.1);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 1.5rem;
     }
 
-    .deliverable-icon i { color: var(--white); font-size: 1.2rem; }
-    .deliverable-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: -0.01em; }
-    .deliverable-desc { font-size: 1rem; color: var(--grey); line-height: 1.6; }
+    .deliverable-icon i { color: var(--red); font-size: 1.3rem; }
+    .deliverable-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: -0.02em; }
+    .deliverable-desc { font-size: 0.95rem; color: var(--grey-light); line-height: 1.6; }
+
+    /* ============================================
+       SPECS GRID
+    ============================================ */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+      padding-top: 3rem;
+    }
+    
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .spec-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .spec-label i {
+      color: var(--red);
+    }
+    
+    .spec-value {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.4;
+    }
 
     /* ============================================
        FOLDERS (ASSETS)
@@ -327,29 +390,24 @@
 
     .folder-wrapper {
       position: relative;
-      transform: scale(1.4);
+      transform: scale(1.6);
       margin: 40px 0;
     }
 
     .folder {
       transition: all 0.2s ease-in;
       cursor: pointer;
-      --folder-color: #222; 
-      --folder-back-color: #111; 
+      --folder-color: #c026d3; 
+      --folder-back-color: #86198f; 
       --paper-1: #1a1a1a;
       --paper-2: #262626;
-      --paper-3: #333;
-    }
-    
-    /* Highlight the first folder as special */
-    .folder.special {
-      --folder-color: var(--red);
-      --folder-back-color: var(--red-dark);
+      --paper-3: #333333;
     }
 
-    .folder:hover { transform: translateY(-8px); }
-    .folder:hover .folder__front { transform: skew(15deg) scaleY(0.6); }
-    .folder:hover .right { transform: skew(-15deg) scaleY(0.6); }
+    .folder:not(.folder--click):hover { transform: translateY(-8px); }
+    .folder:not(.folder--click):hover .paper { transform: translate(-50%, 0%); }
+    .folder:not(.folder--click):hover .folder__front { transform: skew(15deg) scaleY(0.6); }
+    .folder:not(.folder--click):hover .right { transform: skew(-15deg) scaleY(0.6); }
 
     .folder.open { transform: translateY(-8px); }
 
@@ -358,7 +416,7 @@
     }
     .folder.open .paper:nth-child(1):hover {
       transform: translate(calc(-120% + var(--magnet-x, 0px)), calc(-70% + var(--magnet-y, 0px))) rotateZ(-15deg) scale(1.1);
-      z-index: 10; border-color: var(--white);
+      z-index: 10; border-color: var(--red);
     }
 
     .folder.open .paper:nth-child(2) {
@@ -367,7 +425,7 @@
     }
     .folder.open .paper:nth-child(2):hover {
       transform: translate(calc(10% + var(--magnet-x, 0px)), calc(-70% + var(--magnet-y, 0px))) rotateZ(15deg) scale(1.1);
-      z-index: 10; border-color: var(--white);
+      z-index: 10; border-color: var(--red);
     }
 
     .folder.open .paper:nth-child(3) {
@@ -376,7 +434,7 @@
     }
     .folder.open .paper:nth-child(3):hover {
       transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-100% + var(--magnet-y, 0px))) rotateZ(5deg) scale(1.1);
-      z-index: 10; border-color: var(--white);
+      z-index: 10; border-color: var(--red);
     }
 
     .folder.open .folder__front { transform: skew(15deg) scaleY(0.6); }
@@ -411,7 +469,7 @@
       width: 70%;
       height: 80%;
       background: var(--paper-1);
-      border-radius: 4px;
+      border-radius: 6px;
       transition: all 0.3s ease-in-out;
       display: flex;
       align-items: center;
@@ -419,11 +477,11 @@
       flex-direction: column;
       text-decoration: none;
       color: var(--white);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       border: 1px solid var(--border);
     }
-    .paper span.icon { font-size: 0.9rem; color: var(--white); margin-bottom: 4px; opacity: 0.5;}
-    .paper span.label { font-family: 'Inter Tight', sans-serif; font-size: 0.55rem; font-weight: 800; letter-spacing: 0.5px; text-align: center; line-height: 1.2;}
+    .paper span.icon { font-size: 1rem; color: var(--red); margin-bottom: 2px; }
+    .paper span.label { font-family: 'Inter Tight', sans-serif; font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; text-align: center; line-height: 1.2;}
 
     .paper:nth-child(2) { background: var(--paper-2); width: 80%; height: 70%; }
     .paper:nth-child(3) { background: var(--paper-3); width: 90%; height: 60%; }
@@ -434,7 +492,7 @@
       width: 100%;
       height: 100%;
       background: var(--folder-color);
-      border-radius: 4px 8px 8px 8px;
+      border-radius: 5px 10px 10px 10px;
       transform-origin: bottom;
       transition: all 0.3s ease-in-out;
       display: flex;
@@ -446,26 +504,24 @@
       font-family: 'Inter Tight', sans-serif;
       font-weight: 800;
       font-size: 0.45rem;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255,255,255,0.95);
       letter-spacing: 1px;
     }
 
     /* ── WEBGL CIRCULAR GALLERY ─────────────────────────── */
-    .gallery-container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
     .gallery-wrapper {
-      width: 100%;
-      height: 70vh;
-      min-height: 500px;
+      width: 100vw;
       position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      height: 80vh;
+      min-height: 600px;
+      background: transparent;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       overflow: hidden;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--bg);
     }
     .circular-gallery {
       width: 100%;
@@ -480,15 +536,14 @@
       display: block;
       width: 100%;
       height: 100%;
-      outline: none;
     }
 
     /* ============================================
        FOOTER CTA
     ============================================ */
     .footer-cta {
-      background: var(--bg-alt);
-      padding: 8rem 2rem 4rem;
+      background: #0a0a0a;
+      padding: 8rem 2rem;
       text-align: center;
       border-top: 1px solid var(--border);
       position: relative;
@@ -496,12 +551,24 @@
       z-index: 2;
     }
 
+    .footer-cta::before {
+      content: '';
+      position: absolute;
+      bottom: -300px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(192, 38, 211, 0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
     .footer-cta-inner { max-width: 700px; margin: 0 auto; position: relative; }
-    .footer-cta .section-title { margin-bottom: 1rem; }
+    .footer-cta .section-title { margin-bottom: 0.8rem; }
     .footer-cta .section-sub { margin-bottom: 2.5rem; }
 
     .footer-legal {
-      margin-top: 6rem;
+      margin-top: 4rem;
       padding-top: 2rem;
       border-top: 1px solid var(--border);
       max-width: 1100px;
@@ -510,62 +577,67 @@
       text-align: center;
     }
 
-    .footer-legal p { font-size: 0.85rem; color: var(--grey); font-weight: 500; }
+    .footer-legal p { font-size: 0.8rem; color: #555; line-height: 1.6; }
 
     /* ============================================
        RESPONSIVE
     ============================================ */
     @media (max-width: 992px) {
-      .container { width: 90%; padding: 0; }
+      .container { width: 90%; }
       .nav-links { display: none; }
       .menu-toggle { display: flex; }
-      .gallery-wrapper { height: 60vh; min-height: 400px; border-radius: 0; border-left: none; border-right: none;}
-      .gallery-container { padding: 0; max-width: 100%; }
+      .gallery-wrapper { height: 55vh; min-height: 400px; }
       .folders-grid { grid-template-columns: 1fr; gap: 80px; }
     }
 
     @media (max-width: 768px) {
-      .section { padding: 5rem 1.2rem; }
-      nav { padding: 0; }
-      .nav-inner { padding: 1rem 1.2rem; }
+      .section { padding: 4rem 1.2rem; }
+      nav { padding: 0 5%; height: 80px; }
+      .logo { height: 35px; }
       
-      .hero { padding: 8rem 1.2rem 4rem; }
-      .hero-title { font-size: clamp(3rem, 16vw, 6rem); }
-      .hero-sub { font-size: 0.95rem; margin-bottom: 2rem; }
+      .hero-title { font-size: clamp(3rem, 15vw, 6rem); }
+      .hero-sub { font-size: 0.9rem; margin-top: 20px; }
       
-      .section-header { margin-bottom: 3rem; }
-      .section-title { font-size: 2.2rem; }
+      .section-header { margin-bottom: 2.5rem; }
       .deliverables-grid { grid-template-columns: 1fr; gap: 1rem; }
       .deliverable-card { padding: 2rem 1.5rem; }
+      .deliverable-title { font-size: 1.2rem; }
+      .deliverable-desc { font-size: 0.9rem; }
       
       .folder-wrapper { transform: scale(1.3); margin: 30px 0; }
       .folders-grid { gap: 60px; margin-top: 30px; }
       
-      .footer-cta { padding: 6rem 1.2rem 3rem; }
+      .specs-grid { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 2rem; margin-top: 3rem; }
+      
+      .footer-cta { padding: 5rem 1.2rem; }
     }
   </style>
 </head>
 <body>
 
   <!-- BACKGROUND: DARK VEIL CANVAS -->
-  <div class="darkveil-bg">
+  <!-- <div class="darkveil-bg">
     <canvas id="darkveil-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
-  </div>
+  </div> -->
 
   <!-- ============================================
        NAV
   ============================================ -->
-  <nav id="navbar">
+  <nav>
     <div class="nav-inner">
       <a href="#" class="logo-wordmark" aria-label="leomacedo.mp4">
-        <span class="logo-wans">leo</span><span class="logo-lab">macedo.mp4</span>
+        <span class="logo-wans">leo</span>
+        <span class="logo-creator">
+          <span class="logo-c">m</span><span class="logo-r1">a</span><span class="logo-e">c</span><span class="logo-a">e</span><span class="logo-t">d</span><span class="logo-o">o</span>
+        </span>
+        <span class="logo-lab">.mp4</span>
       </a>
       
       <!-- Desktop Nav -->
       <ul class="nav-links">
-        <li><a href="#work" class="scroll-link">Work</a></li>
-        <li><a href="#about" class="scroll-link">System</a></li>
-        <li><a href="#assets" class="scroll-link">Assets</a></li>
+        <li><a href="#work" class="scroll-link">WORK</a></li>
+        <li><a href="#about" class="scroll-link">SYSTEM</a></li>
+        <li><a href="#assets" class="scroll-link">ASSETS</a></li>
       </ul>
 
       <!-- Mobile Nav Toggle -->
@@ -580,10 +652,10 @@
   <!-- Mobile Overlay Menu -->
   <div class="mobile-nav-overlay" id="mobile-nav">
     <ul class="mobile-nav-links">
-      <li><a href="#work" class="scroll-link">Work</a></li>
-      <li><a href="#about" class="scroll-link">System</a></li>
-      <li><a href="#assets" class="scroll-link">Assets</a></li>
-      <li><a href="#contact" class="scroll-link">Contact</a></li>
+      <li><a href="#work" class="scroll-link">WORK</a></li>
+      <li><a href="#about" class="scroll-link">SYSTEM</a></li>
+      <li><a href="#assets" class="scroll-link">ASSETS</a></li>
+      <li><a href="#contact" class="scroll-link">GET IN TOUCH</a></li>
     </ul>
   </div>
 
@@ -593,37 +665,46 @@
     ============================================ -->
     <section class="hero" id="hero">
       <div class="hero-inner">
-        <span class="hero-eyebrow">The Creative Edge</span>
+        <span class="hero-eyebrow">The Creative Edge &mdash; System Online</span>
         <h1 class="hero-headline">
           HIGH IMPACT<br />
           <span class="highlight">VIDEO EDITING</span><br />
-          & MOTION.
+          & MOTION GRAPHICS.
         </h1>
         <p class="hero-sub">
-          Leveling up visual storytelling through technical precision. Advanced VFX, compositing, and fluid animations designed to demand attention.
+          Leveling up visual storytelling through technical chaos. Advanced VFX, 3D Compositing, and fluid animations designed to demand attention.
         </p>
         <div class="hero-cta-group">
-          <a href="#work" class="btn btn-red btn-xl scroll-link">VIEW RECENT WORK</a>
+          <a href="#work" class="btn btn-red btn-xl scroll-link">SEE RECENT OPERATIONS &rarr;</a>
+        </div>
+        
+        <!-- FIX: CSS Adicionado e tags configuradas para alinhar em row no centro -->
+        <div class="hero-social-proof">
+          <span>VFX & COMP</span>
+          <span class="dot"></span>
+          <span>MOTION DESIGN</span>
+          <span class="dot"></span>
+          <span>COLOR GRADING</span>
+          <span class="dot"></span>
+          <span>SOUND DESIGN</span>
         </div>
       </div>
     </section>
 
     <!-- ============================================
-         WORK (WEBGL CAROUSEL - STRAIGHT, NOT CURVED)
+         WORK (WEBGL CAROUSEL)
     ============================================ -->
-    <section class="section section-alt" id="work" style="padding-bottom: 0; border-bottom: none;">
+    <section class="section section-alt" id="work" style="padding-bottom: 0;">
       <div class="section-inner-narrow">
         <div class="section-header">
-          <div class="section-label">Operations</div>
+          <div class="section-label">Recent Operations</div>
           <h2 class="section-title">Selected <span class="highlight">Projects</span></h2>
-          <p class="section-sub">Drag or swipe to explore recent edits and visual experiments.</p>
+          <p class="section-sub">Drag or swipe to explore the latest edits and visual experiments.</p>
         </div>
       </div>
       
-      <div class="gallery-container">
-        <div class="gallery-wrapper">
-          <div id="circular-gallery" class="circular-gallery"></div>
-        </div>
+      <div class="gallery-wrapper">
+        <div id="circular-gallery" class="circular-gallery"></div>
       </div>
     </section>
 
@@ -633,7 +714,7 @@
     <section class="section" id="about">
       <div class="section-inner-narrow">
         <div class="section-header">
-          <div class="section-label">Expertise</div>
+          <div class="section-label">Tech Stack</div>
           <h2 class="section-title">Technical <span class="highlight">Power</span></h2>
           <p class="section-sub">Real tools for real results. No shortcuts.</p>
         </div>
@@ -657,6 +738,26 @@
             <div class="deliverable-desc">Professional color grading and aggressive sound design to elevate every frame of the project.</div>
           </div>
         </div>
+
+        <div class="specs-grid">
+          <div class="spec-item">
+            <span class="spec-label"><i class="fa-solid fa-microchip"></i> Hardware</span>
+            <span class="spec-value">System OK</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label"><i class="fa-solid fa-laptop-code"></i> Software</span>
+            <span class="spec-value">AE, PR, CAPCUT, PS, ELEMENT 3D</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label"><i class="fa-solid fa-location-dot"></i> Base</span>
+            <span class="spec-value">Feira de Santana, BA</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label"><i class="fa-solid fa-wifi"></i> Status</span>
+            <span class="spec-value">Available for Projects</span>
+          </div>
+        </div>
+        
       </div>
     </section>
 
@@ -674,21 +775,21 @@
         <div class="folders-grid">
           <!-- PASTA 1: AE PROJECTS -->
           <div class="folder-wrapper">
-            <div class="folder special">
+            <div class="folder">
               <div class="folder__back">
                 <a href="#" class="paper paper-1">
-                  <span class="icon"><i class="fa-solid fa-download"></i></span>
+                  <span class="icon">↓</span>
                   <span class="label">TRAP EDIT<br>.AEP</span>
                 </a>
                 <a href="#" class="paper paper-2">
-                  <span class="icon"><i class="fa-solid fa-download"></i></span>
+                  <span class="icon">↓</span>
                   <span class="label">3D INTRO<br>.AEP</span>
                 </a>
                 <a href="#" class="paper paper-3">
-                  <span class="icon"><i class="fa-solid fa-download"></i></span>
+                  <span class="icon">↓</span>
                   <span class="label">CHAOS<br>.AEP</span>
                 </a>
-                <div class="folder__front"><div class="folder-name">PROJECTS</div></div>
+                <div class="folder__front"><div class="folder-name">AE_PROJECTS</div></div>
                 <div class="folder__front right"></div>
               </div>
             </div>
@@ -696,18 +797,18 @@
 
           <!-- PASTA 2: VFX / SFX -->
           <div class="folder-wrapper">
-            <div class="folder">
+            <div class="folder" style="--folder-color: #333; --folder-back-color: #1a1a1a;">
               <div class="folder__back">
                 <a href="#" class="paper paper-1">
-                  <span class="icon"><i class="fa-solid fa-download"></i></span>
+                  <span class="icon">↓</span>
                   <span class="label">GLITCH<br>SFX</span>
                 </a>
                 <a href="#" class="paper paper-2">
-                  <span class="icon"><i class="fa-solid fa-download"></i></span>
+                  <span class="icon">↓</span>
                   <span class="label">IMPACTS<br>AUDIO</span>
                 </a>
                 <a href="#" class="paper paper-3">
-                  <span class="icon"><i class="fa-solid fa-download"></i></span>
+                  <span class="icon">↓</span>
                   <span class="label">OVERLAYS<br>4K</span>
                 </a>
                 <div class="folder__front"><div class="folder-name">VFX_SFX</div></div>
@@ -718,21 +819,21 @@
 
           <!-- PASTA 3: PRESETS -->
           <div class="folder-wrapper">
-            <div class="folder">
+            <div class="folder" style="--folder-color: #fff; --folder-back-color: #ccc;">
               <div class="folder__back">
-                <a href="#" class="paper paper-1">
-                  <span class="icon"><i class="fa-solid fa-download"></i></span>
+                <a href="#" class="paper paper-1" style="--paper-1:#111; color:#fff;">
+                  <span class="icon">↓</span>
                   <span class="label">SAPPHIRE<br>PRESETS</span>
                 </a>
-                <a href="#" class="paper paper-2">
-                  <span class="icon"><i class="fa-solid fa-download"></i></span>
+                <a href="#" class="paper paper-2" style="--paper-2:#222; color:#fff;">
+                  <span class="icon">↓</span>
                   <span class="label">COLOR<br>LUTS</span>
                 </a>
-                <a href="#" class="paper paper-3">
-                  <span class="icon"><i class="fa-solid fa-download"></i></span>
+                <a href="#" class="paper paper-3" style="--paper-3:#333; color:#fff;">
+                  <span class="icon">↓</span>
                   <span class="label">CUSTOM<br>FONTS</span>
                 </a>
-                <div class="folder__front"><div class="folder-name">PRESETS</div></div>
+                <div class="folder__front"><div class="folder-name" style="color:#000;">PRESETS_FONTS</div></div>
                 <div class="folder__front right"></div>
               </div>
             </div>
@@ -747,19 +848,20 @@
     ============================================ -->
     <section class="footer-cta" id="contact">
       <div class="footer-cta-inner">
-        <div class="section-label">Contact</div>
+        <div class="section-label">Connect</div>
         <h2 class="section-title">
           Ready to <span class="highlight">create?</span>
         </h2>
         <p class="section-sub" style="margin-bottom: 2rem;">
-          Drop me an email to discuss projects, rates, and availability.
+          Drop me an email to discuss projects, rates, and availability. Let's make something that breaks the mold.
         </p>
-        <a href="mailto:contato@leomacedo.design" class="btn btn-red btn-xl">SEND ME AN EMAIL</a>
+        <a href="mailto:contato@leomacedo.design" class="btn btn-red btn-xl">SEND ME AN EMAIL &rarr;</a>
       </div>
 
       <div class="footer-legal">
         <p>
-          &copy; 2026 LEO MACEDO. DESIGNED FOR IMPACT.
+          &copy; 2026 LEO MACEDO. DESIGNED FOR IMPACT.<br>
+          ALL RIGHTS RESERVED.
         </p>
       </div>
     </section>
@@ -771,46 +873,40 @@
       gsap.registerPlugin(ScrollTrigger);
 
       // Hero animations
-      gsap.from('.hero-eyebrow', { opacity: 0, y: -20, duration: 1, ease: 'power3.out' });
-      gsap.from('.hero-headline', { y: 40, opacity: 0, duration: 1, ease: 'power4.out', delay: 0.1 });
-      gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.3 });
-      gsap.from('.hero-cta-group', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.5 });
+      gsap.from('.hero-headline', { y: 60, opacity: 0, duration: 1, ease: 'power4.out', delay: 0.2 });
+      gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.6 });
+      gsap.from('.hero-cta-group', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.8 });
+      gsap.from('.hero-social-proof', { opacity: 0, y: 15, duration: 1, ease: 'power3.out', delay: 1 });
 
       // Animação de entrada dos textos das seções
-      gsap.utils.toArray('.section-header').forEach(header => {
-        gsap.from(header.children, {
-          scrollTrigger: { trigger: header, start: 'top 85%' },
-          y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
-        });
+      gsap.utils.toArray('section').forEach(section => {
+        if(section.id !== 'hero') {
+          gsap.from(section.querySelectorAll('.section-header *'), {
+            scrollTrigger: { trigger: section, start: 'top 80%' },
+            y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
+          });
+        }
       });
 
       gsap.from('.gallery-wrapper', {
-        scrollTrigger: { trigger: '#work', start: 'top 75%' },
-        y: 40, opacity: 0, duration: 1, ease: 'power3.out'
+        scrollTrigger: { trigger: '#work', start: 'top 70%' },
+        y: 60, opacity: 0, duration: 1.2, ease: 'power3.out'
       });
       
       gsap.from('.deliverable-card', {
         scrollTrigger: { trigger: '#about', start: 'top 75%' },
-        y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
+        y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
+      });
+      
+      gsap.from('.spec-item', {
+        scrollTrigger: { trigger: '.specs-grid', start: 'top 85%' },
+        y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
       });
 
       // Animação das pastas aparecendo
       gsap.from('.folder-wrapper', {
         scrollTrigger: { trigger: '#assets', start: 'top 75%' },
-        y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'back.out(1.2)'
-      });
-
-      // Navbar Hide/Show on Scroll
-      let lastScroll = 0;
-      const navbar = document.getElementById('navbar');
-      window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        if (currentScroll > 100 && currentScroll > lastScroll) {
-          navbar.style.transform = 'translateY(-100%)';
-        } else {
-          navbar.style.transform = 'translateY(0)';
-        }
-        lastScroll = currentScroll;
+        y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)'
       });
 
       // ─────────────────────────────────────────────────────────────
@@ -827,12 +923,13 @@
       }
 
       // ─────────────────────────────────────────────────────────────
-      // SMOOTH SCROLL
+      // SMOOTH SCROLL PARA ENQUADRAMENTO EXATO (Desktop & Mobile)
       // ─────────────────────────────────────────────────────────────
       document.querySelectorAll('.scroll-link').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault(); 
           
+          // Fechar menu mobile se estiver aberto
           if(menuBtn.classList.contains('active')) {
             menuBtn.classList.remove('active');
             mobileNav.classList.remove('active');
@@ -841,6 +938,7 @@
           const targetId = this.getAttribute('href');
           if (targetId === '#') return;
           const targetSection = document.querySelector(targetId);
+          // Ajusta a altura do header com base no dispositivo
           const headerHeight = window.innerWidth <= 768 ? 80 : 100;
           
           if (targetSection) {
@@ -851,6 +949,7 @@
               const elementPosition = gallery.getBoundingClientRect().top;
               const availableHeight = window.innerHeight - headerHeight;
               const centerOffset = (availableHeight - gallery.offsetHeight) / 2;
+              
               offsetPosition = elementPosition + window.pageYOffset - headerHeight - (centerOffset > 0 ? centerOffset : 0);
             } else {
               const elementPosition = targetSection.getBoundingClientRect().top;
@@ -865,7 +964,7 @@
         });
       });
 
-      // Lógica magnética das pastas (Acordeão)
+      // Lógica magnética das pastas E lógica de Acordeão (Fecha as outras)
       const folders = document.querySelectorAll('.folder');
 
       folders.forEach(folder => {
@@ -957,7 +1056,7 @@
     }
 
     class Title {
-      constructor({ gl, plane, renderer, text, textColor = '#ffffff', font = '800 22px "Inter Tight", sans-serif' }) {
+      constructor({ gl, plane, renderer, text, textColor = '#ffffff', font = '900 35px "Inter Tight", sans-serif' }) {
         autoBind(this);
         this.gl = gl;
         this.plane = plane;
@@ -997,13 +1096,12 @@
         });
         this.mesh = new Mesh(this.gl, { geometry, program });
         const aspect = width / height;
-        // Tornar o texto menor em relação à imagem para evitar invasão/sobreposição
-        const textHeight = this.plane.scale.y * 0.08; 
+        const textHeight = this.plane.scale.y * 0.15;
         const textWidth = textHeight * aspect;
         this.mesh.scale.set(textWidth, textHeight, 1);
         
-        // Posição ajustada: Levemente acima da thumb
-        this.mesh.position.y = this.plane.scale.y * 0.5 + textHeight * 0.6 + 0.05;
+        // Posição no topo da thumbnail
+        this.mesh.position.y = this.plane.scale.y * 0.5 + textHeight * 0.5 + 0.05;
         
         this.mesh.setParent(this.plane);
       }
@@ -1047,16 +1145,11 @@
             uniform mat4 projectionMatrix;
             uniform float uTime;
             uniform float uSpeed;
-            // Variable para controlar a curvatura (bend)
-            uniform float uBend;
             varying vec2 vUv;
             void main() {
               vUv = uv;
               vec3 p = position;
-              // Se bend for 0, mantem reto. Caso contrario aplica distorcao
-              if(uBend > 0.0) {
-                 p.z = (sin(p.x * 4.0 + uTime) * 1.5 + cos(p.y * 2.0 + uTime) * 1.5) * (0.1 + uSpeed * 0.5);
-              }
+              p.z = (sin(p.x * 4.0 + uTime) * 1.5 + cos(p.y * 2.0 + uTime) * 1.5) * (0.1 + uSpeed * 0.5);
               gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
             }
           `,
@@ -1101,7 +1194,6 @@
             uImageSizes: { value: [0, 0] },
             uSpeed: { value: 0 },
             uTime: { value: 100 * Math.random() },
-            uBend: { value: this.bend },
             uBorderRadius: { value: this.borderRadius }
           },
           transparent: true
@@ -1194,7 +1286,7 @@
     }
 
     class App {
-      constructor(container, { items, bend, textColor = '#ffffff', borderRadius = 0, font = '800 24px "Inter Tight", sans-serif', scrollSpeed = 2, scrollEase = 0.05 } = {}) {
+      constructor(container, { items, bend, textColor = '#ffffff', borderRadius = 0, font = '900 30px "Inter Tight", sans-serif', scrollSpeed = 2, scrollEase = 0.05 } = {}) {
         this.container = container;
         this.scrollSpeed = scrollSpeed;
         this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
@@ -1352,7 +1444,7 @@
     }
 
     window.addEventListener('load', () => {
-      // 1. Inicia o Carrossel WebGL (Straight layout: bend = 0)
+      // 1. Inicia o Carrossel
       const container = document.getElementById('circular-gallery');
       const myProjects = [
         { image: 'airbnb.png', text: 'HYO - AIRBNB', link: 'https://www.youtube.com/watch?v=LJbFmxFRlDs' },
@@ -1366,10 +1458,10 @@
 
       new App(container, {
         items: myProjects,
-        bend: 0, // FIXED: Carrossel reto, sem curva
+        bend: 2,
         textColor: '#ffffff',
-        borderRadius: 8,
-        font: '800 22px "Inter Tight", sans-serif',
+        borderRadius: 8, // Wan's theme has slight rounding on media
+        font: '900 35px "Inter Tight", sans-serif',
         scrollSpeed: 2.5,
         scrollEase: 0.05
       });
