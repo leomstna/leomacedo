@@ -757,7 +757,6 @@
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
       
-      // FIX 1: O regex agora pega exclusivamente o valor antes do "px" ignorando o peso (ex: 900)
       const sizeMatch = font.match(/(\d+)px/);
       const fontSize = sizeMatch ? parseInt(sizeMatch[1], 10) : 30;
       const textHeight = Math.ceil(fontSize * 1.2);
@@ -778,6 +777,7 @@
       
       const texture = new Texture(gl, { generateMipmaps: false });
       texture.image = canvas;
+      texture.needsUpdate = true; // Força o WebGL a atualizar os pixels do canvas
       return { texture, width: canvas.width, height: canvas.height };
     }
 
@@ -934,7 +934,6 @@
         });
 
         const img = new Image();
-        // FIX 2: Removido o crossOrigin pra evitar bloqueios bestas do GitHub Pages com arquivos locais
         img.onload = () => {
           this.texture.image = img;
           this.texture.needsUpdate = true;
@@ -1014,13 +1013,19 @@
 
         this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
         
+        // FIX MATEMÁTICO: Escalar o texto considerando que ele já herda a escala do pai
         if (this.title && this.title.mesh) {
           const aspect = this.title.baseWidth / this.title.baseHeight;
-          const textHeight = this.plane.scale.y * (isMobile ? 0.15 : 0.15); 
-          const textWidth = textHeight * aspect;
           
-          this.title.mesh.scale.set(textWidth, textHeight, 1);
-          this.title.mesh.position.y = this.plane.scale.y * 0.5 + textHeight * 0.5 + 0.05;
+          // Escala local pura (0.12 significa 12% do tamanho do pai)
+          const localScaleY = isMobile ? 0.14 : 0.11; 
+          const localScaleX = localScaleY * aspect;
+          
+          this.title.mesh.scale.set(localScaleX, localScaleY, 1);
+          
+          // No OGL, 0.5 é o topo exato do plano original. 
+          // Posicionamos acima dele somando metade da escala do próprio texto + margem.
+          this.title.mesh.position.y = 0.5 + (localScaleY * 0.5) + 0.05;
           this.title.mesh.position.z = 0.1; 
         }
 
@@ -1198,14 +1203,13 @@
         { image: 'minhamente.png', text: 'MATEUSXAVIER - MINHAMENTE', link: 'https://www.youtube.com/watch?v=0zZKwwBSiME' },
         { image: 'querubim.png', text: 'HYO - QUERUBIM', link: 'https://www.youtube.com/watch?v=tVFf_r0V468' },
         { image: 'roubanoplayboy.png', text: 'MATEUSXAVIER - ROUBANO PLAYBOY', link: 'https://www.youtube.com/watch?v=3_l8Czgivqw' },
-        { image: 'temaver.png', text: 'DORITOZ - TEM A ver', link: 'https://www.youtube.com/watch?v=ufuXcytH0OU' },
+        { image: 'temaver.png', text: 'DORITOZ - TEM A VER', link: 'https://www.youtube.com/watch?v=ufuXcytH0OU' },
       ];
 
       new App(container, {
         items: myProjects,
         bend: 0, 
         textColor: '#ffffff',
-        // FIX 3: O radius corrigido pra UV space. 0.03 dá uma borda bem sutil. Se quiser zero borda redonda, bota 0.
         borderRadius: 0.03, 
         font: '900 35px "Inter Tight", sans-serif',
         scrollSpeed: 2.5,
