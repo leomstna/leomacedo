@@ -474,7 +474,6 @@
       .logo { height: 35px; }
       
       .hero-title { font-size: clamp(3rem, 15vw, 6rem); }
-      .hero-title .hollow { -webkit-text-stroke: 1px #fff; }
       .hero-sub { font-size: 0.9rem; margin-top: 20px; }
       
       .section-header { margin-bottom: 2.5rem; }
@@ -914,24 +913,18 @@
             }
             
             void main() {
-              vec2 ratio = vec2(1.0);
-              // Previne divisão por zero enquanto a imagem carrega
-              if (uImageSizes.x > 0.0 && uImageSizes.y > 0.0) {
-                  ratio = vec2(
-                    min((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
-                    min((uPlaneSizes.y / uPlaneSizes.x) / (uImageSizes.y / uImageSizes.x), 1.0)
-                  );
-              }
+              vec2 ratio = vec2(
+                min((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
+                min((uPlaneSizes.y / uPlaneSizes.x) / (uImageSizes.y / uImageSizes.x), 1.0)
+              );
               vec2 uv = vec2(
                 vUv.x * ratio.x + (1.0 - ratio.x) * 0.5,
                 vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
               );
               
               vec4 color = vec4(0.0, 0.0, 0.0, 0.0); 
-              if (uImageSizes.x > 1.0) {
+              if (uImageSizes.x > 0.0) {
                  color = texture2D(tMap, uv);
-              } else {
-                 color = vec4(0.1, 0.1, 0.1, 1.0); // Placeholder background
               }
               
               float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
@@ -944,7 +937,7 @@
           uniforms: {
             tMap: { value: this.texture },
             uPlaneSizes: { value: [0, 0] },
-            uImageSizes: { value: [1, 1] }, // Fallback para não dar NaN no GLSL
+            uImageSizes: { value: [0, 0] },
             uSpeed: { value: 0 },
             uTime: { value: 100 * Math.random() },
             uBorderRadius: { value: this.borderRadius }
@@ -1043,7 +1036,6 @@
           this.title.mesh.position.y = (this.plane.scale.y * 0.5) + (textHeight * 0.5) + 0.1;
         }
 
-        // Aumentando padding no mobile para as thumbs não ficarem exprimidas
         this.padding = this.plane.scale.x * (isMobile ? 0.15 : 0.1); 
         this.width = this.plane.scale.x + this.padding;
         this.widthTotal = this.width * this.length;
