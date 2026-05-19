@@ -9,18 +9,21 @@
   <title>leomacedo.mp4 | Creative Editor & Motion Graphics</title>
   <meta name="description" content="Portfolio de Leo Macedo - Edição de vídeo, Motion Graphics e VFX." />
 
+  <!-- Fonts: Inter & Inter Tight (Based on Wan's Creator Lab) + Space Mono for terminal vibe -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&family=Space+Mono&display=swap" rel="stylesheet" />
   
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+  <!-- GSAP & Plugins -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
   <style>
     /* ============================================
-       RESET & BASE 
+       RESET & BASE (Wan's Theme)
     ============================================ */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -302,11 +305,11 @@
     .section-sub { font-size: 1.1rem; color: var(--grey-light); line-height: 1.7; max-width: 600px; margin: 0 auto; }
 
     /* ============================================
-       WHAT YOU GET (SERVICES) - AUTO GRID FIXED
+       WHAT YOU GET (SERVICES) - FIXED GRID
     ============================================ */
     .deliverables-grid { 
       display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      grid-template-columns: repeat(3, 1fr); 
       gap: 1.5rem; 
       margin-top: 3rem; 
     }
@@ -319,7 +322,7 @@
       transition: border-color 0.2s ease, transform 0.2s ease;
       display: flex;
       flex-direction: column;
-      height: 100%; /* Fix: Cards da mesma altura */
+      height: 100%; 
     }
 
     .deliverable-card:hover { border-color: rgba(192, 38, 211, 0.4); transform: translateY(-5px); }
@@ -338,17 +341,14 @@
 
     .deliverable-icon i { color: var(--red); font-size: 1.3rem; }
     .deliverable-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: -0.02em; }
-    .deliverable-desc { 
-      font-size: 0.95rem; color: var(--grey-light); line-height: 1.6; 
-      flex-grow: 1; /* Faz o texto preencher o espaço, empurrando igual */
-    }
+    .deliverable-desc { font-size: 0.95rem; color: var(--grey-light); line-height: 1.6; }
 
     /* ============================================
-       SPECS GRID - AUTO GRID FIXED
+       SPECS GRID - FIXED GRID
     ============================================ */
     .specs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+      grid-template-columns: repeat(4, 1fr); 
       gap: 2rem;
       margin-top: 4rem;
       border-top: 1px solid var(--border);
@@ -463,6 +463,9 @@
       .nav-links { display: none; }
       .menu-toggle { display: flex; }
       .gallery-wrapper { height: 55vh; min-height: 400px; }
+      
+      .deliverables-grid { grid-template-columns: repeat(2, 1fr); }
+      .specs-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
@@ -471,6 +474,7 @@
       .logo { height: 35px; }
       
       .hero-title { font-size: clamp(3rem, 15vw, 6rem); }
+      .hero-title .hollow { -webkit-text-stroke: 1px #fff; }
       .hero-sub { font-size: 0.9rem; margin-top: 20px; }
       
       .section-header { margin-bottom: 2.5rem; }
@@ -488,6 +492,9 @@
 </head>
 <body>
 
+  <!-- ============================================
+       NAV
+  ============================================ -->
   <nav>
     <div class="nav-inner">
       <a href="#" class="logo-wordmark" aria-label="leomacedo.mp4">
@@ -498,12 +505,14 @@
         <span class="logo-lab">.mp4</span>
       </a>
       
+      <!-- Desktop Nav -->
       <ul class="nav-links">
         <li><a href="#work" class="scroll-link">WORK</a></li>
         <li><a href="#about" class="scroll-link">SYSTEM</a></li>
         <li><a href="#contact" class="scroll-link">GET IN TOUCH</a></li>
       </ul>
 
+      <!-- Mobile Nav Toggle -->
       <div class="menu-toggle" id="mobile-menu-btn">
         <span></span>
         <span></span>
@@ -512,6 +521,7 @@
     </div>
   </nav>
 
+  <!-- Mobile Overlay Menu -->
   <div class="mobile-nav-overlay" id="mobile-nav">
     <ul class="mobile-nav-links">
       <li><a href="#work" class="scroll-link">WORK</a></li>
@@ -521,6 +531,9 @@
   </div>
 
   <main>
+    <!-- ============================================
+         HERO
+    ============================================ -->
     <section class="hero" id="hero">
       <div class="hero-inner">
         <span class="hero-eyebrow">The Creative Edge &mdash; System Online</span>
@@ -548,6 +561,9 @@
       </div>
     </section>
 
+    <!-- ============================================
+         WORK (WEBGL CAROUSEL)
+    ============================================ -->
     <section class="section section-alt" id="work" style="padding-bottom: 0;">
       <div class="section-inner-narrow">
         <div class="section-header">
@@ -562,6 +578,9 @@
       </div>
     </section>
 
+    <!-- ============================================
+         CAPACIDADES (TECH STACK)
+    ============================================ -->
     <section class="section" id="about">
       <div class="section-inner-narrow">
         <div class="section-header">
@@ -612,6 +631,9 @@
       </div>
     </section>
 
+    <!-- ============================================
+         FOOTER CTA
+    ============================================ -->
     <section class="footer-cta" id="contact">
       <div class="footer-cta-inner">
         <div class="section-label">Connect</div>
@@ -633,6 +655,7 @@
     </section>
   </main>
 
+  <!-- SCRIPTS GSAP E INTERAÇÕES -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
@@ -728,6 +751,7 @@
     });
   </script>
 
+  <!-- WEBGL CIRCULAR GALLERY SCRIPT -->
   <script type="module">
     import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform, Raycast, Vec2 } from 'https://esm.sh/ogl';
 
@@ -788,6 +812,10 @@
         this.text = text;
         this.textColor = textColor;
         this.font = font;
+        
+        // Setup empty mesh initially
+        this.baseWidth = 100;
+        this.baseHeight = 100;
         this.createMesh();
       }
       createMesh() {
@@ -818,15 +846,10 @@
           uniforms: { tMap: { value: texture } },
           transparent: true
         });
+        
         this.mesh = new Mesh(this.gl, { geometry, program });
-        const aspect = width / height;
-        const textHeight = this.plane.scale.y * 0.15;
-        const textWidth = textHeight * aspect;
-        this.mesh.scale.set(textWidth, textHeight, 1);
-        
-        // Posição no topo da thumbnail
-        this.mesh.position.y = this.plane.scale.y * 0.5 + textHeight * 0.5 + 0.05;
-        
+        this.baseWidth = width;
+        this.baseHeight = height;
         this.mesh.setParent(this.plane);
       }
     }
@@ -891,18 +914,24 @@
             }
             
             void main() {
-              vec2 ratio = vec2(
-                min((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
-                min((uPlaneSizes.y / uPlaneSizes.x) / (uImageSizes.y / uImageSizes.x), 1.0)
-              );
+              vec2 ratio = vec2(1.0);
+              // Previne divisão por zero enquanto a imagem carrega
+              if (uImageSizes.x > 0.0 && uImageSizes.y > 0.0) {
+                  ratio = vec2(
+                    min((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
+                    min((uPlaneSizes.y / uPlaneSizes.x) / (uImageSizes.y / uImageSizes.x), 1.0)
+                  );
+              }
               vec2 uv = vec2(
                 vUv.x * ratio.x + (1.0 - ratio.x) * 0.5,
                 vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
               );
               
               vec4 color = vec4(0.0, 0.0, 0.0, 0.0); 
-              if (uImageSizes.x > 0.0) {
+              if (uImageSizes.x > 1.0) {
                  color = texture2D(tMap, uv);
+              } else {
+                 color = vec4(0.1, 0.1, 0.1, 1.0); // Placeholder background
               }
               
               float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
@@ -915,7 +944,7 @@
           uniforms: {
             tMap: { value: this.texture },
             uPlaneSizes: { value: [0, 0] },
-            uImageSizes: { value: [0, 0] },
+            uImageSizes: { value: [1, 1] }, // Fallback para não dar NaN no GLSL
             uSpeed: { value: 0 },
             uTime: { value: 100 * Math.random() },
             uBorderRadius: { value: this.borderRadius }
@@ -996,13 +1025,26 @@
         }
         this.scale = this.screen.height / 1500;
         
-        const baseWidth = window.innerWidth <= 768 ? 350 : 800; // Ajustado para não estourar no mobile
+        const isMobile = window.innerWidth <= 768;
+        const baseWidth = isMobile ? 800 : 1000; 
         this.plane.scale.x = (this.viewport.width * (baseWidth * this.scale)) / this.screen.width;
         this.plane.scale.y = this.plane.scale.x * (9 / 16); 
 
         this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
         
-        this.padding = this.plane.scale.x * 0.1; 
+        // --- Atualiza escala e posição do texto de forma blindada ---
+        if (this.title && this.title.mesh) {
+          const aspect = this.title.baseWidth / this.title.baseHeight;
+          const textHeight = this.plane.scale.y * (isMobile ? 0.15 : 0.12); // Responsivo
+          const textWidth = textHeight * aspect;
+          
+          this.title.mesh.scale.set(textWidth, textHeight, 1);
+          // Posição no topo da thumbnail atualizada com base na escala real
+          this.title.mesh.position.y = (this.plane.scale.y * 0.5) + (textHeight * 0.5) + 0.1;
+        }
+
+        // Aumentando padding no mobile para as thumbs não ficarem exprimidas
+        this.padding = this.plane.scale.x * (isMobile ? 0.15 : 0.1); 
         this.width = this.plane.scale.x + this.padding;
         this.widthTotal = this.width * this.length;
         this.x = this.width * this.index;
@@ -1192,7 +1234,3 @@
   </script>
 </body>
 </html>
-"""
-
-with open("index_leomacedo_final_fixed.html", "w", encoding="utf-8") as f:
-    f.write(html_content)}
