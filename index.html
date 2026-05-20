@@ -20,7 +20,7 @@
 
   <style>
     /* ============================================
-       RESET & BASE
+       RESET & BASE (Wan's Theme)
     ============================================ */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -311,12 +311,6 @@
       margin-top: 3rem; 
     }
 
-    .deliverable-wrapper {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
     .deliverable-card {
       background: var(--bg);
       border: 1px solid var(--border);
@@ -411,10 +405,64 @@
       overflow: hidden;
       cursor: grab;
     }
+    .circular-gallery:active {
+      cursor: grabbing;
+    }
     .circular-gallery canvas {
       display: block;
       width: 100%;
       height: 100%;
+    }
+
+    /* ============================================
+       PITCH VIDEO SECTION (WANS LAB STYLE)
+    ============================================ */
+    #pitch-video {
+      background: #050505;
+      border-top: 1px solid var(--border);
+    }
+    .pitch-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .pitch-eyebrow {
+      font-family: 'Inter Tight', sans-serif;
+      color: var(--grey-light);
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .pitch-title {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .video-container {
+      max-width: 850px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(192, 38, 211, 0.3);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(192, 38, 211, 0.15);
+      background: #000;
+    }
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      outline: none;
+    }
+    .pitch-footer-text {
+      text-align: center;
+      color: var(--grey-light);
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin: 2.5rem auto 0;
+      line-height: 1.6;
     }
 
     /* ============================================
@@ -575,28 +623,22 @@
         </div>
 
         <div class="deliverables-grid">
-          <div class="deliverable-wrapper">
-            <div class="deliverable-card">
-              <div class="deliverable-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-              <div class="deliverable-title">VFX & COMP</div>
-              <div class="deliverable-desc">Advanced use of Sapphire, Deep Glow, and Twixtor. Crafting visuals that completely transform the raw footage.</div>
-            </div>
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="deliverable-title">VFX & COMP</div>
+            <div class="deliverable-desc">Advanced use of Sapphire, Deep Glow, and Twixtor. Crafting visuals that completely transform the raw footage.</div>
           </div>
 
-          <div class="deliverable-wrapper">
-            <div class="deliverable-card">
-              <div class="deliverable-icon"><i class="fa-solid fa-layer-group"></i></div>
-              <div class="deliverable-title">MOTION DESIGN</div>
-              <div class="deliverable-desc">Fluid, high-impact animations. From complex 2D typography scaling to seamless 3D scene integration.</div>
-            </div>
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="deliverable-title">MOTION DESIGN</div>
+            <div class="deliverable-desc">Fluid, high-impact animations. From complex 2D typography scaling to seamless 3D scene integration.</div>
           </div>
 
-          <div class="deliverable-wrapper">
-            <div class="deliverable-card">
-              <div class="deliverable-icon"><i class="fa-solid fa-film"></i></div>
-              <div class="deliverable-title">POST PRODUCTION</div>
-              <div class="deliverable-desc">Professional color grading and aggressive sound design to elevate every frame of the project.</div>
-            </div>
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fa-solid fa-film"></i></div>
+            <div class="deliverable-title">POST PRODUCTION</div>
+            <div class="deliverable-desc">Professional color grading and aggressive sound design to elevate every frame of the project.</div>
           </div>
         </div>
 
@@ -619,6 +661,23 @@
           </div>
         </div>
         
+      </div>
+    </section>
+
+    <section class="section" id="pitch-video">
+      <div class="section-inner-narrow">
+        <div class="pitch-header">
+          <span class="pitch-eyebrow">Antes de avançares, vê isto.</span>
+          <h2 class="pitch-title">O <span class="highlight">MÉTODO</span> — VÊ ISTO PRIMEIRO</h2>
+        </div>
+        
+        <div class="video-container">
+          <video src="apresentando.mp4" controls preload="metadata"></video>
+        </div>
+        
+        <p class="pitch-footer-text">
+          Esta é a apresentação brutal de como a magia acontece. Vê o vídeo até ao fim para perceberes o esquema antes de entrares em contacto.
+        </p>
       </div>
     </section>
 
@@ -653,8 +712,9 @@
       gsap.from('.hero-cta-group', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.8 });
       gsap.from('.hero-social-proof', { opacity: 0, y: 15, duration: 1, ease: 'power3.out', delay: 1 });
 
+      // Animação blindada contra NodeLists Vazias
       gsap.utils.toArray('section').forEach(section => {
-        if(section.id !== 'hero') {
+        if(section.id !== 'hero' && section.id !== 'pitch-video') {
           const targets = section.querySelectorAll('.section-header *, .footer-cta-inner *');
           if (targets.length > 0) {
             gsap.from(targets, {
@@ -670,7 +730,7 @@
         y: 60, opacity: 0, duration: 1.2, ease: 'power3.out'
       });
       
-      gsap.from('.deliverable-wrapper', {
+      gsap.from('.deliverable-card', {
         scrollTrigger: { trigger: '#about', start: 'top 75%' },
         y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
       });
@@ -680,7 +740,15 @@
         y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
       });
 
-      // Menu Mobile
+      // Animação brutal para o leitor de vídeo
+      gsap.from('.video-container', {
+        scrollTrigger: { trigger: '#pitch-video', start: 'top 75%' },
+        y: 50, opacity: 0, duration: 1, ease: 'power3.out'
+      });
+
+      // ─────────────────────────────────────────────────────────────
+      // MOBILE MENU LOGIC
+      // ─────────────────────────────────────────────────────────────
       const menuBtn = document.getElementById('mobile-menu-btn');
       const mobileNav = document.getElementById('mobile-nav');
 
@@ -691,11 +759,14 @@
         });
       }
 
-      // Smooth Scroll
+      // ─────────────────────────────────────────────────────────────
+      // SMOOTH SCROLL PARA ENQUADRAMENTO EXATO (Desktop & Mobile)
+      // ─────────────────────────────────────────────────────────────
       document.querySelectorAll('.scroll-link').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault(); 
           
+          // Fechar menu mobile se estiver aberto
           if(menuBtn.classList.contains('active')) {
             menuBtn.classList.remove('active');
             mobileNav.classList.remove('active');
@@ -704,6 +775,7 @@
           const targetId = this.getAttribute('href');
           if (targetId === '#') return;
           const targetSection = document.querySelector(targetId);
+          // Ajusta a altura do header com base no dispositivo
           const headerHeight = window.innerWidth <= 768 ? 80 : 100;
           
           if (targetSection) {
@@ -759,8 +831,8 @@
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
       
-      const sizeMatch = font.match(/(\d+)px/);
-      const fontSize = sizeMatch ? parseInt(sizeMatch[1], 10) : 30;
+      const sizeMatch = font.match(/\d+/);
+      const fontSize = sizeMatch ? parseInt(sizeMatch[0], 10) : 30;
       const textHeight = Math.ceil(fontSize * 1.2);
       
       context.font = font;
@@ -779,7 +851,6 @@
       
       const texture = new Texture(gl, { generateMipmaps: false });
       texture.image = canvas;
-      texture.needsUpdate = true;
       return { texture, width: canvas.width, height: canvas.height };
     }
 
@@ -793,6 +864,7 @@
         this.textColor = textColor;
         this.font = font;
         
+        // Setup empty mesh initially
         this.baseWidth = 100;
         this.baseHeight = 100;
         this.createMesh();
@@ -834,12 +906,11 @@
     }
 
     class Media {
-      constructor({ geometry, gl, image, video, index, length, renderer, scene, screen, text, link, viewport, bend, textColor, borderRadius = 0, font }) {
+      constructor({ geometry, gl, image, index, length, renderer, scene, screen, text, link, viewport, bend, textColor, borderRadius = 0, font }) {
         this.extra = 0;
         this.geometry = geometry;
         this.gl = gl;
         this.image = image;
-        this.videoSrc = video; // Propriedade do vídeo adicionada
         this.index = index;
         this.length = length;
         this.renderer = renderer;
@@ -865,13 +936,6 @@
         this.onResize();
       }
       createShader() {
-        // Criando a textura fallback do video pra não quebrar o WebGL se não tiver arquivo
-        const emptyCanvas = document.createElement('canvas');
-        emptyCanvas.width = 1; emptyCanvas.height = 1;
-        this.videoTexture = new Texture(this.gl, { generateMipmaps: false, minFilter: this.gl.LINEAR, magFilter: this.gl.LINEAR });
-        this.videoTexture.image = emptyCanvas;
-        this.videoTexture.needsUpdate = true;
-
         this.program = new Program(this.gl, {
           depthTest: false,
           depthWrite: false,
@@ -887,6 +951,7 @@
             void main() {
               vUv = uv;
               vec3 p = position;
+              p.z = (sin(p.x * 4.0 + uTime) * 1.5 + cos(p.y * 2.0 + uTime) * 1.5) * (0.1 + uSpeed * 0.5);
               gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
             }
           `,
@@ -895,9 +960,7 @@
             uniform vec2 uImageSizes;
             uniform vec2 uPlaneSizes;
             uniform sampler2D tMap;
-            uniform sampler2D tVideo;
             uniform float uBorderRadius;
-            uniform float uVideoMix;
             varying vec2 vUv;
             
             float roundedBoxSDF(vec2 p, vec2 b, float r) {
@@ -921,11 +984,7 @@
                 vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
               );
               
-              vec4 imageColor = texture2D(tMap, uv); 
-              vec4 videoColor = texture2D(tVideo, uv);
-              
-              // Crossfade brutal entre a thumb e o vídeo
-              vec4 color = mix(imageColor, videoColor, uVideoMix);
+              vec4 color = texture2D(tMap, uv); 
               
               float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
               float edgeSmooth = 0.002;
@@ -940,8 +999,6 @@
           `,
           uniforms: {
             tMap: { value: this.texture },
-            tVideo: { value: this.videoTexture }, // Uniform do video injetado
-            uVideoMix: { value: 0.0 }, // Controlador do Fade
             uPlaneSizes: { value: [0, 0] },
             uImageSizes: { value: [1.0, 1.0] }, 
             uSpeed: { value: 0 },
@@ -952,25 +1009,13 @@
         });
 
         const img = new Image();
+        img.crossOrigin = 'anonymous'; 
         img.onload = () => {
           this.texture.image = img;
-          this.texture.needsUpdate = true;
+          this.texture.needsUpdate = true; 
           this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
         };
         img.src = this.image;
-
-        // Lógica bruta do elemento de Vídeo
-        if (this.videoSrc) {
-            this.video = document.createElement('video');
-            this.video.src = this.videoSrc;
-            this.video.muted = true;
-            this.video.loop = true;
-            this.video.crossOrigin = 'anonymous';
-            this.video.playsInline = true;
-            this.video.preload = 'none'; // Evita gastar banda sem precisar
-            this.isVideoPlaying = false;
-            this.isHovered = false;
-        }
       }
       createMesh() {
         this.plane = new Mesh(this.gl, { geometry: this.geometry, program: this.program });
@@ -985,39 +1030,6 @@
           textColor: this.textColor,
           font: this.font
         });
-      }
-      onHoverIn() {
-          if (!this.video) return;
-          this.isHovered = true;
-          
-          // Delay estratégico de 300ms pra não surtar o navegador
-          this.hoverTimeout = setTimeout(() => {
-              if (!this.isHovered) return;
-              this.video.play().then(() => {
-                  this.isVideoPlaying = true;
-                  if (this.isHovered) {
-                      window.gsap.to(this.program.uniforms.uVideoMix, { value: 1.0, duration: 0.5 });
-                  } else {
-                      this.video.pause();
-                      this.isVideoPlaying = false;
-                  }
-              }).catch(e => console.warn('Preview block:', e));
-          }, 300);
-      }
-      onHoverOut() {
-          if (!this.video) return;
-          this.isHovered = false;
-          clearTimeout(this.hoverTimeout);
-          
-          window.gsap.killTweensOf(this.program.uniforms.uVideoMix);
-          window.gsap.to(this.program.uniforms.uVideoMix, {
-              value: 0.0,
-              duration: 0.3,
-              onComplete: () => {
-                  this.video.pause();
-                  this.isVideoPlaying = false;
-              }
-          });
       }
       update(scroll, direction) {
         this.plane.position.x = this.x - scroll.current - this.extra;
@@ -1046,12 +1058,6 @@
         this.speed = scroll.current - scroll.last;
         this.program.uniforms.uTime.value += 0.04;
         this.program.uniforms.uSpeed.value = this.speed;
-
-        // Renderiza os frames do vídeo em tempo real na textura do WebGL se estiver tocando
-        if (this.isVideoPlaying && this.video && this.video.readyState >= 3) {
-            this.videoTexture.image = this.video;
-            this.videoTexture.needsUpdate = true;
-        }
 
         const planeOffset = this.plane.scale.x / 2;
         const viewportOffset = this.viewport.width / 2;
@@ -1085,12 +1091,11 @@
         
         if (this.title && this.title.mesh) {
           const aspect = this.title.baseWidth / this.title.baseHeight;
-          const localScaleY = isMobile ? 0.14 : 0.11; 
-          const localScaleX = localScaleY * aspect;
+          const textHeight = this.plane.scale.y * (isMobile ? 0.15 : 0.12); 
+          const textWidth = textHeight * aspect;
           
-          this.title.mesh.scale.set(localScaleX, localScaleY, 1);
-          this.title.mesh.position.y = 0.5 + (localScaleY * 0.5) + 0.05;
-          this.title.mesh.position.z = 0.1; 
+          this.title.mesh.scale.set(textWidth, textHeight, 1);
+          this.title.mesh.position.y = (this.plane.scale.y * 0.5) + (textHeight * 0.5) + 0.1;
         }
 
         this.padding = this.plane.scale.x * (isMobile ? 0.15 : 0.1); 
@@ -1112,8 +1117,7 @@
         this.createScene();
         
         this.raycast = new Raycast(this.gl);
-        this.mouse = new Vec2(-2, -2); // Inicia fora da tela
-        this.hoveredMedia = null;
+        this.mouse = new Vec2();
 
         this.onResize();
         this.createGeometry();
@@ -1145,7 +1149,6 @@
             geometry: this.planeGeometry,
             gl: this.gl,
             image: data.image,
-            video: data.video, // Manda o link do video pra classe Media
             index,
             length: this.mediasImages.length,
             renderer: this.renderer,
@@ -1237,25 +1240,6 @@
         if (this.medias) {
           this.medias.forEach(media => media.update(this.scroll, direction));
         }
-
-        // Lógica bruta do Hover e Raycast contínuo
-        this.raycast.castMouse(this.camera, this.mouse);
-        const meshes = this.medias.map(m => m.plane);
-        const hits = this.raycast.intersectBounds(meshes);
-        
-        let currentHover = null;
-        if (hits.length > 0) {
-            const hitMesh = hits[0];
-            currentHover = this.medias.find(m => m.plane === hitMesh);
-        }
-
-        if (currentHover !== this.hoveredMedia) {
-            if (this.hoveredMedia) this.hoveredMedia.onHoverOut();
-            if (currentHover) currentHover.onHoverIn();
-            this.hoveredMedia = currentHover;
-            this.gl.canvas.style.cursor = currentHover ? 'pointer' : 'grab';
-        }
-
         this.renderer.render({ scene: this.scene, camera: this.camera });
         this.scroll.last = this.scroll.current;
         this.raf = window.requestAnimationFrame(this.update.bind(this));
@@ -1271,21 +1255,7 @@
         this.container.addEventListener('wheel', this.boundOnWheel, { passive: true });
         
         this.gl.canvas.addEventListener('mousedown', this.boundOnTouchDown);
-        
-        // Rastreando o mouse em tempo real no canvas pro Raycast acertar o alvo
-        this.gl.canvas.addEventListener('mousemove', (e) => {
-            const rect = this.gl.canvas.getBoundingClientRect();
-            this.mouse.set(
-                ((e.clientX - rect.left) / rect.width) * 2 - 1,
-                -((e.clientY - rect.top) / rect.height) * 2 + 1
-            );
-            this.boundOnTouchMove(e);
-        });
-        
-        this.gl.canvas.addEventListener('mouseleave', () => {
-            this.mouse.set(-2, -2); // Joga o raycast pra fora da tela se o mouse sair do container
-        });
-
+        this.gl.canvas.addEventListener('mousemove', this.boundOnTouchMove);
         window.addEventListener('mouseup', this.boundOnTouchUp);
         this.gl.canvas.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
         this.gl.canvas.addEventListener('touchmove', this.boundOnTouchMove, { passive: true });
@@ -1295,11 +1265,8 @@
 
     window.addEventListener('load', () => {
       const container = document.getElementById('circular-gallery');
-      
-      // AQUI É A PARADA IMPORTANTE:
-      // Adicione a tag 'video: "seuvideo.mp4"' para engatilhar o hover. Deixei um de exemplo.
       const myProjects = [
-        { image: 'airbnb.png', video: 'airbnb_preview.mp4', text: 'HYO - AIRBNB', link: 'https://www.youtube.com/watch?v=LJbFmxFRlDs' },
+        { image: 'airbnb.png', text: 'HYO - AIRBNB', link: 'https://www.youtube.com/watch?v=LJbFmxFRlDs' },
         { image: 'encruzilhada.png', text: 'ZINNZ - ENCRUZILHADA', link: 'https://www.youtube.com/watch?v=MirhuBalAeg' },
         { image: 'falsa.png', text: 'ZINNZ - FALSA', link: 'https://www.youtube.com/watch?v=J0DLgvq7MxE' },
         { image: 'minhamente.png', text: 'MATEUSXAVIER - MINHAMENTE', link: 'https://www.youtube.com/watch?v=0zZKwwBSiME' },
@@ -1310,9 +1277,9 @@
 
       new App(container, {
         items: myProjects,
-        bend: 0, 
+        bend: 2,
         textColor: '#ffffff',
-        borderRadius: 0.03, 
+        borderRadius: 8, 
         font: '900 35px "Inter Tight", sans-serif',
         scrollSpeed: 2.5,
         scrollEase: 0.05
