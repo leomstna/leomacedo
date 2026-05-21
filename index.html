@@ -806,11 +806,10 @@
   <script type="importmap">
   {
     "imports": {
-      "ogl": "https://cdn.jsdelivr.net/npm/ogl@1.0.7/src/index.js"
+      "ogl": "https://cdn.jsdelivr.net/npm/ogl/dist/ogl.mjs"
     }
   }
   </script>
-
   <script type="module">
     import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform, Raycast, Vec2 } from 'ogl';
 
@@ -998,7 +997,7 @@
               float edgeSmooth = 0.002;
               float alpha = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
               
-              if (uImageSizes.x <= 1.0) {
+              if (uImageSizes.x == 0.0) {
                   alpha = 0.0;
               }
               
@@ -1008,7 +1007,7 @@
           uniforms: {
             tMap: { value: this.texture },
             uPlaneSizes: { value: [0, 0] },
-            uImageSizes: { value: [1.0, 1.0] }, 
+            uImageSizes: { value: [0, 0] }, 
             uSpeed: { value: 0 },
             uTime: { value: 100 * Math.random() },
             uBorderRadius: { value: this.borderRadius }
