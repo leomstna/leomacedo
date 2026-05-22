@@ -1104,23 +1104,24 @@
         this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
         
           if (this.title && this.title.mesh) {
+          // ==========================================
+          // VARIÁVEIS DE CONTROLE PARA VOCÊ AJUSTAR
+          // ==========================================
+          const tamanhoTexto = 0.8;  // 0.8 = Ocupa 80% da largura da thumb. (Teste 1.0 ou mais para vazar as bordas)
+          const espacamento = 0.05;  // Distância do texto pra thumb. (0.01 gruda, 0.1 afasta)
+          // ==========================================
+
           const aspect = this.title.baseWidth / this.title.baseHeight;
           
-          // 1. Altura do texto. 0.25 significa que a altura do texto será 25% da altura da thumb.
-          const localTextHeight = isMobile ? 0.3 : 0.45; 
+          // A mágica acontece aqui: ancoramos a escala no eixo X (largura) 
+          // e compensamos o achatamento do card (16/9) no eixo Y.
+          const scaleX = tamanhoTexto; 
+          const scaleY = scaleX / aspect * (16 / 9); 
           
-          // 2. Compensa o achatamento (porque sua thumb é 16:9 retangular, e não um quadrado perfeito)
-          const parentAspect = 9 / 16; 
-          const localTextWidth = localTextHeight * parentAspect * aspect;
+          this.title.mesh.scale.set(scaleX, scaleY, 1);
           
-          this.title.mesh.scale.set(localTextWidth, localTextHeight, 1);
-          
-          // 3. Posiciona o texto:
-          // 0.5 = topo exato da thumb.
-          // (localTextHeight * 0.5) = puxa o ponto de ancoragem pro meio do texto pra ele não ficar cortado.
-          // gap = distância entre o texto e a thumb.
-          const gap = 0.001; 
-          this.title.mesh.position.y = 0.5 + (localTextHeight * 0.5) + gap;
+          // 0.5 crava na borda. Somamos metade da altura do texto para o eixo centralizar, e aplicamos seu espaçamento.
+          this.title.mesh.position.y = 0.5 + (scaleY * 0.5) + espacamento;
         }
 
         this.padding = this.plane.scale.x * (isMobile ? 0.15 : 0.1); 
