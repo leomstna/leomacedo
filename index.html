@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   
   <link rel="icon" type="image/jpeg" href="assets/favicon.jpg" />
   
@@ -20,7 +20,7 @@
 
   <style>
     /* ============================================
-       RESET & BASE (Wan's Theme)
+       RESET & BASE 
     ============================================ */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -55,13 +55,14 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       position: relative;
+      width: 100vw;
     }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
     /* ============================================
-       INTER TIGHT — HEADINGS, LABELS, BUTTONS
+       INTER TIGHT
     ============================================ */
     h1, h2, h3, h4, h5, h6,
     .hero-eyebrow,
@@ -111,7 +112,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
       z-index: 1000;
       background: rgba(17, 17, 17, 0.85);
       backdrop-filter: blur(12px);
@@ -169,7 +170,7 @@
     .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background: var(--red); }
 
     .mobile-nav-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
       background: rgba(17, 17, 17, 0.98); z-index: 999;
       display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
@@ -178,7 +179,7 @@
     .mobile-nav-overlay.active { opacity: 1; pointer-events: all; }
     .mobile-nav-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 40px; }
     .mobile-nav-links a {
-      color: #fff; font-family: 'Inter Tight', sans-serif; font-size: 3rem; 
+      color: #fff; font-family: 'Inter Tight', sans-serif; font-size: 2.5rem; 
       font-weight: 900; text-transform: uppercase; transition: 0.3s;
     }
     .mobile-nav-links a:hover { color: var(--red); }
@@ -187,11 +188,11 @@
        HERO
     ============================================ */
     .hero {
-      padding: 10rem 2rem 5rem;
+      padding: 8rem 1.5rem 4rem;
       text-align: center;
       position: relative;
       overflow: hidden;
-      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -203,14 +204,15 @@
       top: -100px;
       left: 50%;
       transform: translateX(-50%);
-      width: 800px;
+      width: 100%;
+      max-width: 800px;
       height: 600px;
       background: radial-gradient(ellipse, rgba(192, 38, 211, 0.15) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
 
-    .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
+    .hero-inner { width: 100%; max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
 
     .hero-eyebrow {
       display: inline-block;
@@ -227,9 +229,9 @@
     }
 
     .hero-headline {
-      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
       font-weight: 900;
-      line-height: 1.05;
+      line-height: 1.1;
       letter-spacing: -0.03em;
       margin-bottom: 1.4rem;
       text-transform: uppercase;
@@ -238,7 +240,7 @@
     .hero-headline .highlight { color: var(--red); }
 
     .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
       color: var(--grey-light);
       max-width: 640px;
       margin: 0 auto 2.4rem;
@@ -252,9 +254,9 @@
       flex-wrap: wrap;
       justify-content: center; 
       align-items: center; 
-      gap: 1.2rem; 
+      gap: 1rem; 
       font-family: var(--font-code);
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--grey);
       margin-top: 2.5rem;
       text-transform: uppercase;
@@ -271,12 +273,12 @@
     /* ============================================
        SECTION UTILITY
     ============================================ */
-    .section { padding: 6rem 2rem; position: relative; z-index: 2; }
+    .section { padding: 5rem 1.5rem; position: relative; z-index: 2; }
     .section-alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .section-inner { max-width: 1400px; margin: 0 auto; }
-    .section-inner-narrow { max-width: 1100px; margin: 0 auto; }
+    .section-inner { max-width: 1400px; margin: 0 auto; width: 100%; }
+    .section-inner-narrow { max-width: 1100px; margin: 0 auto; width: 100%; }
 
-    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
 
     .section-label {
       font-size: 0.8rem;
@@ -289,7 +291,7 @@
     }
 
     .section-title {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-size: clamp(2rem, 6vw, 4.5rem);
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1.1;
@@ -299,14 +301,14 @@
     
     .section-title .highlight { color: var(--red); }
 
-    .section-sub { font-size: 1.1rem; color: var(--grey-light); line-height: 1.7; max-width: 600px; margin: 0 auto; }
+    .section-sub { font-size: 1rem; color: var(--grey-light); line-height: 1.6; max-width: 600px; margin: 0 auto; }
 
     /* ============================================
-       WHAT YOU GET (SERVICES) - AUTO GRID FIXED
+       WHAT YOU GET (SERVICES)
     ============================================ */
     .deliverables-grid { 
       display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
       gap: 1.5rem; 
       margin-top: 3rem; 
     }
@@ -315,9 +317,8 @@
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 2.5rem 2rem;
-      /* Deixamos apenas a cor da borda aqui para não brigar com o GSAP */
-      transition: border-color 0.2s ease; 
+      padding: 2rem 1.5rem;
+      transition: border-color 0.2s ease, transform 0.2s ease;
       display: flex;
       flex-direction: column;
       height: 100%; 
@@ -326,80 +327,63 @@
     .deliverable-card:hover { 
       border-color: rgba(192, 38, 211, 0.4); 
       transform: translateY(-5px); 
-      /* A transição suave do movimento agora só ativa quando você passa o mouse */
-      transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
     .deliverable-icon {
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       background: rgba(192, 38, 211, 0.1);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       flex-shrink: 0;
     }
 
-    .deliverable-icon i { color: var(--red); font-size: 1.3rem; }
-    .deliverable-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: -0.02em; }
+    .deliverable-icon i { color: var(--red); font-size: 1.2rem; }
+    .deliverable-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: -0.02em; }
     .deliverable-desc { 
-      font-size: 0.95rem; color: var(--grey-light); line-height: 1.6; 
+      font-size: 0.9rem; color: var(--grey-light); line-height: 1.6; 
       flex-grow: 1; 
     }
 
     /* ============================================
-       SPECS GRID - AUTO GRID FIXED
+       SPECS GRID
     ============================================ */
     .specs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-      gap: 2rem;
-      margin-top: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+      gap: 1.5rem;
+      margin-top: 3rem;
       border-top: 1px solid var(--border);
-      padding-top: 3rem;
+      padding-top: 2rem;
     }
     
-    .spec-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+    .spec-item { display: flex; flex-direction: column; gap: 0.4rem; }
     
     .spec-label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--grey);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     
-    .spec-label i {
-      color: var(--red);
-    }
-    
-    .spec-value {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.4;
-    }
+    .spec-label i { color: var(--red); }
+    .spec-value { font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white); line-height: 1.3; }
 
     /* ── WEBGL CIRCULAR GALLERY ─────────────────────────── */
     .gallery-wrapper {
       width: 100vw;
       position: relative;
       left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      height: 80vh;
-      min-height: 600px;
+      transform: translateX(-50%);
+      height: 60dvh;
+      min-height: 450px;
       background: transparent;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -410,73 +394,39 @@
       height: 100%;
       overflow: hidden;
       cursor: grab;
+      touch-action: pan-y; /* Permite rolagem nativa vertical no mobile */
     }
-    .circular-gallery:active {
-      cursor: grabbing;
-    }
-    .circular-gallery canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
+    .circular-gallery:active { cursor: grabbing; }
+    .circular-gallery canvas { display: block; width: 100%; height: 100%; }
 
     /* ============================================
-       PITCH VIDEO SECTION (WANS LAB STYLE)
+       PITCH VIDEO SECTION
     ============================================ */
-    #pitch-video {
-      background: #050505;
-      border-top: 1px solid var(--border);
-    }
-    .pitch-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-    .pitch-eyebrow {
-      font-family: 'Inter Tight', sans-serif;
-      color: var(--grey-light);
-      font-size: 1rem;
-      margin-bottom: 0.8rem;
-      display: block;
-    }
-    .pitch-title {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: var(--red);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+    #pitch-video { background: #050505; border-top: 1px solid var(--border); }
+    .pitch-header { text-align: center; margin-bottom: 2rem; }
+    .pitch-eyebrow { font-family: 'Inter Tight', sans-serif; color: var(--grey-light); font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
+    .pitch-title { font-family: 'Inter Tight', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--red); text-transform: uppercase; letter-spacing: 1px; }
+    
     .video-container {
-      max-width: 340px; /* O culpado é esse cara aqui */
+      width: 100%;
+      max-width: 600px; /* Video liberado para se adaptar com sanidade */
       margin: 0 auto;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(192, 38, 211, 0.3);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(192, 38, 211, 0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(192, 38, 211, 0.1);
       background: #000;
     }
-    .video-container video {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
-      outline: none;
-    }
-    .pitch-footer-text {
-      text-align: center;
-      color: var(--grey-light);
-      font-size: 0.95rem;
-      max-width: 600px;
-      margin: 2.5rem auto 0;
-      line-height: 1.6;
-    }
+    .video-container video { width: 100%; height: auto; display: block; border-radius: 12px; outline: none; }
+    
+    .pitch-footer-text { text-align: center; color: var(--grey-light); font-size: 0.9rem; max-width: 600px; margin: 2rem auto 0; line-height: 1.6; }
 
     /* ============================================
        FOOTER CTA
     ============================================ */
     .footer-cta {
       background: #0a0a0a;
-      padding: 8rem 2rem;
+      padding: 6rem 1.5rem;
       text-align: center;
       border-top: 1px solid var(--border);
       position: relative;
@@ -487,22 +437,22 @@
     .footer-cta::before {
       content: '';
       position: absolute;
-      bottom: -300px;
+      bottom: -200px;
       left: 50%;
       transform: translateX(-50%);
-      width: 700px;
-      height: 600px;
+      width: 100%;
+      max-width: 700px;
+      height: 400px;
       background: radial-gradient(ellipse, rgba(192, 38, 211, 0.15) 0%, transparent 65%);
       pointer-events: none;
     }
 
     .footer-cta-inner { max-width: 700px; margin: 0 auto; position: relative; }
-    .footer-cta .section-title { margin-bottom: 0.8rem; }
-    .footer-cta .section-sub { margin-bottom: 2.5rem; }
+    .footer-cta .section-sub { margin-bottom: 2rem; }
 
     .footer-legal {
-      margin-top: 4rem;
-      padding-top: 2rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
       border-top: 1px solid var(--border);
       max-width: 1100px;
       margin-left: auto;
@@ -510,37 +460,21 @@
       text-align: center;
     }
 
-    .footer-legal p { font-size: 0.8rem; color: #555; line-height: 1.6; }
+    .footer-legal p { font-size: 0.75rem; color: #555; line-height: 1.6; }
 
     /* ============================================
-       RESPONSIVE
+       RESPONSIVE overrides
     ============================================ */
     @media (max-width: 992px) {
-      .container { width: 90%; }
       .nav-links { display: none; }
       .menu-toggle { display: flex; }
-      .gallery-wrapper { height: 55vh; min-height: 400px; }
     }
 
     @media (max-width: 768px) {
-      .section { padding: 4rem 1.2rem; }
-      nav { padding: 0 5%; height: 80px; }
-      .logo { height: 35px; }
-      
-      .hero-title { font-size: clamp(3rem, 15vw, 6rem); }
-      .hero-title .hollow { -webkit-text-stroke: 1px #fff; }
-      .hero-sub { font-size: 0.9rem; margin-top: 20px; }
-      
-      .section-header { margin-bottom: 2.5rem; }
-      
-      .deliverables-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .deliverable-card { padding: 2rem 1.5rem; }
-      .deliverable-title { font-size: 1.2rem; }
-      .deliverable-desc { font-size: 0.9rem; }
-      
-      .specs-grid { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 2rem; margin-top: 3rem; }
-      
-      .footer-cta { padding: 5rem 1.2rem; }
+      nav { padding: 0 1.5rem; height: 70px; }
+      .logo-wordmark { font-size: 1.3rem; }
+      .btn-xl { padding: 1rem 2rem; font-size: 1rem; width: 100%; }
+      .hero-cta-group { width: 100%; max-width: 300px; margin: 0 auto; }
     }
   </style>
 </head>
@@ -693,7 +627,7 @@
         <h2 class="section-title">
           Ready to <span class="highlight">create?</span>
         </h2>
-        <p class="section-sub" style="margin-bottom: 2rem;">
+        <p class="section-sub">
           Drop me an email to discuss projects, rates, and availability. Let's make something that breaks the mold.
         </p>
         <a href="mailto:contato@leomacedo.design" class="btn btn-red btn-xl">SEND ME AN EMAIL &rarr;</a>
@@ -712,50 +646,44 @@
     document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
 
-      // Hero animations
-      gsap.from('.hero-headline', { y: 60, opacity: 0, duration: 1, ease: 'power4.out', delay: 0.2 });
-      gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.6 });
-      gsap.from('.hero-cta-group', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.8 });
-      gsap.from('.hero-social-proof', { opacity: 0, y: 15, duration: 1, ease: 'power3.out', delay: 1 });
+      gsap.from('.hero-headline', { y: 40, opacity: 0, duration: 1, ease: 'power4.out', delay: 0.2 });
+      gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.4 });
+      gsap.from('.hero-cta-group', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.6 });
+      gsap.from('.hero-social-proof', { opacity: 0, y: 15, duration: 1, ease: 'power3.out', delay: 0.8 });
 
-      // Animação blindada contra NodeLists Vazias
       gsap.utils.toArray('section').forEach(section => {
         if(section.id !== 'hero' && section.id !== 'pitch-video') {
           const targets = section.querySelectorAll('.section-header *, .footer-cta-inner *');
           if (targets.length > 0) {
             gsap.from(targets, {
-              scrollTrigger: { trigger: section, start: 'top 80%' },
-              y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
+              scrollTrigger: { trigger: section, start: 'top 85%' },
+              y: 20, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
             });
           }
         }
       });
 
       gsap.from('.gallery-wrapper', {
-        scrollTrigger: { trigger: '#work', start: 'top 70%' },
-        y: 60, opacity: 0, duration: 1.2, ease: 'power3.out'
+        scrollTrigger: { trigger: '#work', start: 'top 75%' },
+        y: 40, opacity: 0, duration: 1, ease: 'power3.out'
       });
       
       gsap.from('.deliverable-card', {
-        scrollTrigger: { trigger: '#about', start: 'top 75%' },
-        y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
+        scrollTrigger: { trigger: '#about', start: 'top 80%' },
+        y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
         clearProps: 'all'
       });
       
       gsap.from('.spec-item', {
-        scrollTrigger: { trigger: '.specs-grid', start: 'top 85%' },
-        y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
+        scrollTrigger: { trigger: '.specs-grid', start: 'top 90%' },
+        y: 15, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
       });
 
-      // Animação brutal para o leitor de vídeo
       gsap.from('.video-container', {
-        scrollTrigger: { trigger: '#pitch-video', start: 'top 75%' },
-        y: 50, opacity: 0, duration: 1, ease: 'power3.out'
+        scrollTrigger: { trigger: '#pitch-video', start: 'top 80%' },
+        y: 30, opacity: 0, duration: 1, ease: 'power3.out'
       });
 
-      // ─────────────────────────────────────────────────────────────
-      // MOBILE MENU LOGIC
-      // ─────────────────────────────────────────────────────────────
       const menuBtn = document.getElementById('mobile-menu-btn');
       const mobileNav = document.getElementById('mobile-nav');
 
@@ -763,47 +691,28 @@
         menuBtn.addEventListener('click', () => {
           menuBtn.classList.toggle('active');
           mobileNav.classList.toggle('active');
+          document.body.style.overflow = menuBtn.classList.contains('active') ? 'hidden' : '';
         });
       }
 
-      // ─────────────────────────────────────────────────────────────
-      // SMOOTH SCROLL PARA ENQUADRAMENTO EXATO (Desktop & Mobile)
-      // ─────────────────────────────────────────────────────────────
       document.querySelectorAll('.scroll-link').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault(); 
           
-          // Fechar menu mobile se estiver aberto
           if(menuBtn.classList.contains('active')) {
             menuBtn.classList.remove('active');
             mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
           }
           
           const targetId = this.getAttribute('href');
           if (targetId === '#') return;
           const targetSection = document.querySelector(targetId);
-          // Ajusta a altura do header com base no dispositivo
-          const headerHeight = window.innerWidth <= 768 ? 80 : 100;
+          const headerHeight = window.innerWidth <= 768 ? 70 : 90;
           
           if (targetSection) {
-            let offsetPosition = 0;
-
-            if (targetId === '#work') {
-              const gallery = document.querySelector('.gallery-wrapper');
-              const elementPosition = gallery.getBoundingClientRect().top;
-              const availableHeight = window.innerHeight - headerHeight;
-              const centerOffset = (availableHeight - gallery.offsetHeight) / 2;
-              
-              offsetPosition = elementPosition + window.pageYOffset - headerHeight - (centerOffset > 0 ? centerOffset : 0);
-            } else {
-              const elementPosition = targetSection.getBoundingClientRect().top;
-              offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; 
-            }
-        
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
-            });
+            let offsetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
           }
         });
       });
@@ -828,9 +737,7 @@
       };
     }
 
-    function lerp(p1, p2, t) {
-      return p1 + (p2 - p1) * t;
-    }
+    function lerp(p1, p2, t) { return p1 + (p2 - p1) * t; }
 
     function autoBind(instance) {
       const proto = Object.getPrototypeOf(instance);
@@ -844,7 +751,6 @@
     function createTextTexture(gl, text, font = 'bold 30px sans-serif', color = 'black') {
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
-      
       const sizeMatch = font.match(/\d+/);
       const fontSize = sizeMatch ? parseInt(sizeMatch[0], 10) : 30;
       const textHeight = Math.ceil(fontSize * 1.2);
@@ -877,8 +783,6 @@
         this.text = text;
         this.textColor = textColor;
         this.font = font;
-        
-        // Setup empty mesh initially
         this.baseWidth = 100;
         this.baseHeight = 100;
         this.createMesh();
@@ -938,11 +842,7 @@
         this.borderRadius = borderRadius;
         this.font = font;
         
-        this.texture = new Texture(this.gl, { 
-            generateMipmaps: false,
-            minFilter: this.gl.LINEAR,
-            magFilter: this.gl.LINEAR
-        });
+        this.texture = new Texture(this.gl, { generateMipmaps: false, minFilter: this.gl.LINEAR, magFilter: this.gl.LINEAR });
 
         this.createShader();
         this.createMesh();
@@ -965,10 +865,7 @@
             void main() {
               vUv = uv;
               vec3 p = position;
-              
-              // Zera a distorção no eixo Z para remover o efeito de profundidade
               p.z = 0.0; 
-              
               gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
             }
           `,
@@ -996,20 +893,13 @@
                   );
               }
               
-              vec2 uv = vec2(
-                vUv.x * ratio.x + (1.0 - ratio.x) * 0.5,
-                vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
-              );
-              
+              vec2 uv = vec2(vUv.x * ratio.x + (1.0 - ratio.x) * 0.5, vUv.y * ratio.y + (1.0 - ratio.y) * 0.5);
               vec4 color = texture2D(tMap, uv); 
               
               float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
               float edgeSmooth = 0.002;
               float alpha = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
-              
-              if (uImageSizes.x == 0.0) {
-                  alpha = 0.0;
-              }
+              if (uImageSizes.x == 0.0) alpha = 0.0;
               
               gl_FragColor = vec4(color.rgb, color.a * alpha);
             }
@@ -1039,30 +929,20 @@
         this.plane.setParent(this.scene);
       }
       createTitle() {
-        this.title = new Title({
-          gl: this.gl,
-          plane: this.plane,
-          renderer: this.renderer,
-          text: this.text,
-          textColor: this.textColor,
-          font: this.font
-        });
+        this.title = new Title({ gl: this.gl, plane: this.plane, renderer: this.renderer, text: this.text, textColor: this.textColor, font: this.font });
       }
       update(scroll, direction) {
         this.plane.position.x = this.x - scroll.current - this.extra;
-
         const x = this.plane.position.x;
         const H = this.viewport.width / 2;
 
         if (this.bend === 0) {
-          // Valores bem menores agora, só pra compensar a altura do texto
           this.plane.position.y = window.innerWidth <= 768 ? -0.2 : -0.3; 
           this.plane.rotation.z = 0;
         } else {
           const B_abs = Math.abs(this.bend);
           const R = (H * H + B_abs * B_abs) / (2 * B_abs);
           const effectiveX = Math.min(Math.abs(x), H);
-
           const arc = R - Math.sqrt(R * R - effectiveX * effectiveX);
           if (this.bend > 0) {
             this.plane.position.y = -arc;
@@ -1079,8 +959,6 @@
 
         const planeOffset = this.plane.scale.x / 2;
         const viewportOffset = this.viewport.width / 2;
-        
-        // Cria um buffer extra (largura de 1.5 cards) para garantir que ele só soma/subtrai depois que sumir 100% da tela
         const buffer = this.plane.scale.x * 1.5;
         
         this.isBefore = this.plane.position.x + planeOffset < -viewportOffset - buffer;
@@ -1104,38 +982,21 @@
           }
         }
         this.scale = this.screen.height / 1500;
-        
         const isMobile = window.innerWidth <= 768;
-        // 1. MATE O 3700. Troque por 1000 para o objeto caber na tela.
-        const baseWidth = isMobile ? 900 : 3000
+        const baseWidth = isMobile ? 1200 : 3000;
         this.plane.scale.x = (this.viewport.width * (baseWidth * this.scale)) / this.screen.width;
         this.plane.scale.y = this.plane.scale.x * (9 / 16); 
 
         this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
         
         if (this.title && this.title.mesh) {
-          // ==========================================
-          // ==========================================
-          // VARIÁVEIS DE CONTROLE
-          // ==========================================
-          const tamanhoTextoY = isMobile ? 0.25 : 0.80; 
-          
-          // Use um valor NEGATIVO para ignorar a margem transparente e colar o texto.
-          // Vá testando -0.1, -0.15, -0.2 até encostar onde você quer.
-          const espacamento = -0.25; 
-          // ==========================================
-
+          const tamanhoTextoY = isMobile ? 0.35 : 0.80; 
+          const espacamento = isMobile ? -0.15 : -0.25; 
           const aspect = this.title.baseWidth / this.title.baseHeight;
-          
-          // Travamos a altura (scaleY) pra fonte ficar uniforme em todos os cards
           const scaleY = tamanhoTextoY;
-          
-          // A largura (scaleX) se adapta ao texto e compensa a distorção 16:9 do card pai
           const scaleX = scaleY * aspect * (9 / 16); 
           
           this.title.mesh.scale.set(scaleX, scaleY, 1);
-          
-          // Posiciona e aplica o espaçamento
           this.title.mesh.position.y = 0.5 + (scaleY * 0.5) + espacamento;
         }
 
@@ -1156,10 +1017,8 @@
         this.createRenderer();
         this.createCamera();
         this.createScene();
-        
         this.raycast = new Raycast(this.gl);
         this.mouse = new Vec2();
-
         this.onResize();
         this.createGeometry();
         this.createMedias(items, bend, textColor, borderRadius, font);
@@ -1177,31 +1036,15 @@
         this.camera.fov = 45;
         this.camera.position.z = 20;
       }
-      createScene() {
-        this.scene = new Transform();
-      }
-      createGeometry() {
-        this.planeGeometry = new Plane(this.gl, { heightSegments: 50, widthSegments: 100 });
-      }
+      createScene() { this.scene = new Transform(); }
+      createGeometry() { this.planeGeometry = new Plane(this.gl, { heightSegments: 50, widthSegments: 100 }); }
       createMedias(items, bend = 1, textColor, borderRadius, font) {
         this.mediasImages = items.concat(items); 
         this.medias = this.mediasImages.map((data, index) => {
           return new Media({
-            geometry: this.planeGeometry,
-            gl: this.gl,
-            image: data.image,
-            index,
-            length: this.mediasImages.length,
-            renderer: this.renderer,
-            scene: this.scene,
-            screen: this.screen,
-            text: data.text,
-            link: data.link, 
-            viewport: this.viewport,
-            bend,
-            textColor,
-            borderRadius,
-            font
+            geometry: this.planeGeometry, gl: this.gl, image: data.image, index, length: this.mediasImages.length,
+            renderer: this.renderer, scene: this.scene, screen: this.screen, text: data.text, link: data.link,
+            viewport: this.viewport, bend, textColor, borderRadius, font
           });
         });
       }
@@ -1214,6 +1057,12 @@
       onTouchMove(e) {
         if (!this.isDown) return;
         const x = e.touches ? e.touches[0].clientX : e.clientX;
+        const y = e.touches ? e.touches[0].clientY : e.clientY;
+        const moveX = Math.abs(x - this.start);
+        const moveY = Math.abs(y - this.startY);
+
+        if (moveX > moveY && e.cancelable) e.preventDefault(); 
+        
         const distance = (this.start - x) * (this.scrollSpeed * 0.025);
         this.scroll.target = this.scroll.position + distance;
       }
@@ -1222,10 +1071,7 @@
         const x = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
         const y = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
 
-        const moveX = Math.abs(x - this.start);
-        const moveY = Math.abs(y - this.startY);
-
-        if (moveX < 5 && moveY < 5) {
+        if (Math.abs(x - this.start) < 5 && Math.abs(y - this.startY) < 5) {
           const rect = this.gl.canvas.getBoundingClientRect();
           const mouseX = ((x - rect.left) / rect.width) * 2 - 1;
           const mouseY = -((y - rect.top) / rect.height) * 2 + 1;
@@ -1233,19 +1079,12 @@
           this.mouse.set(mouseX, mouseY);
           this.raycast.castMouse(this.camera, this.mouse);
           
-          const meshes = this.medias.map(m => m.plane);
-          const hits = this.raycast.intersectBounds(meshes);
-
+          const hits = this.raycast.intersectBounds(this.medias.map(m => m.plane));
           if (hits.length > 0) {
-            const hitMesh = hits[0];
-            const clickedMedia = this.medias.find(m => m.plane === hitMesh);
-            
-            if (clickedMedia && clickedMedia.link) {
-              window.open(clickedMedia.link, '_blank');
-            }
+            const clickedMedia = this.medias.find(m => m.plane === hits[0]);
+            if (clickedMedia && clickedMedia.link) window.open(clickedMedia.link, '_blank');
           }
         }
-        
         this.onCheck();
       }
       onWheel(e) {
@@ -1256,31 +1095,22 @@
       onCheck() {
         if (!this.medias || !this.medias[0]) return;
         const width = this.medias[0].width;
-        const itemIndex = Math.round(Math.abs(this.scroll.target) / width);
-        const item = width * itemIndex;
+        const item = width * Math.round(Math.abs(this.scroll.target) / width);
         this.scroll.target = this.scroll.target < 0 ? -item : item;
       }
       onResize() {
-        this.screen = {
-          width: this.container.clientWidth,
-          height: this.container.clientHeight
-        };
+        this.screen = { width: this.container.clientWidth, height: this.container.clientHeight };
         this.renderer.setSize(this.screen.width, this.screen.height);
         this.camera.perspective({ aspect: this.screen.width / this.screen.height });
         const fov = (this.camera.fov * Math.PI) / 180;
         const height = 2 * Math.tan(fov / 2) * this.camera.position.z;
-        const width = height * this.camera.aspect;
-        this.viewport = { width, height };
-        if (this.medias) {
-          this.medias.forEach(media => media.onResize({ screen: this.screen, viewport: this.viewport }));
-        }
+        this.viewport = { width: height * this.camera.aspect, height };
+        if (this.medias) this.medias.forEach(media => media.onResize({ screen: this.screen, viewport: this.viewport }));
       }
       update() {
         this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
         const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
-        if (this.medias) {
-          this.medias.forEach(media => media.update(this.scroll, direction));
-        }
+        if (this.medias) this.medias.forEach(media => media.update(this.scroll, direction));
         this.renderer.render({ scene: this.scene, camera: this.camera });
         this.scroll.last = this.scroll.current;
         this.raf = window.requestAnimationFrame(this.update.bind(this));
@@ -1292,42 +1122,38 @@
         this.boundOnTouchMove = this.onTouchMove.bind(this);
         this.boundOnTouchUp = this.onTouchUp.bind(this);
         window.addEventListener('resize', this.boundOnResize);
-        
         this.container.addEventListener('wheel', this.boundOnWheel, { passive: true });
-        
         this.gl.canvas.addEventListener('mousedown', this.boundOnTouchDown);
         this.gl.canvas.addEventListener('mousemove', this.boundOnTouchMove);
         window.addEventListener('mouseup', this.boundOnTouchUp);
         this.gl.canvas.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
-        this.gl.canvas.addEventListener('touchmove', this.boundOnTouchMove, { passive: true });
+        this.gl.canvas.addEventListener('touchmove', this.boundOnTouchMove, { passive: false }); 
         window.addEventListener('touchend', this.boundOnTouchUp);
       }
     }
 
     window.addEventListener('load', () => {
       const container = document.getElementById('circular-gallery');
-      // Aguarda 2 frames para garantir que o layout está pintado e o container tem dimensões reais
       requestAnimationFrame(() => requestAnimationFrame(() => {
-      const myProjects = [
-        { image: 'assets/airbnb.png', text: 'Hyo - Airbnb', link: 'https://www.youtube.com/watch?v=LJbFmxFRlDs' },
-        { image: 'assets/encruzilhada.png', text: 'Zinnz - Encruzilhada', link: 'https://www.youtube.com/watch?v=MirhuBalAeg' },
-        { image: 'assets/falsa.png', text: 'Zinnz - Falsa', link: 'https://www.youtube.com/watch?v=J0DLgvq7MxE' },
-        { image: 'assets/minhamente.png', text: 'MateusXavier - Minhamente', link: 'https://www.youtube.com/watch?v=0zZKwwBSiME' },
-        { image: 'assets/querubim.png', text: 'Hyo - Querubim', link: 'https://www.youtube.com/watch?v=tVFf_r0V468' },
-        { image: 'assets/roubanoplayboy.png', text: 'MateusXavier - Roubano Playboy', link: 'https://www.youtube.com/watch?v=3_l8Czgivqw' },
-        { image: 'assets/temaver.png', text: 'Doritoz - Tem a ver', link: 'https://www.youtube.com/watch?v=ufuXcytH0OU' },
-      ];
-
+        const myProjects = [
+          { image: 'assets/airbnb.png', text: 'Hyo - Airbnb', link: 'https://www.youtube.com/watch?v=LJbFmxFRlDs' },
+          { image: 'assets/encruzilhada.png', text: 'Zinnz - Encruzilhada', link: 'https://www.youtube.com/watch?v=MirhuBalAeg' },
+          { image: 'assets/falsa.png', text: 'Zinnz - Falsa', link: 'https://www.youtube.com/watch?v=J0DLgvq7MxE' },
+          { image: 'assets/minhamente.png', text: 'MateusXavier - Minhamente', link: 'https://www.youtube.com/watch?v=0zZKwwBSiME' },
+          { image: 'assets/querubim.png', text: 'Hyo - Querubim', link: 'https://www.youtube.com/watch?v=tVFf_r0V468' },
+          { image: 'assets/roubanoplayboy.png', text: 'MateusXavier - Roubano Playboy', link: 'https://www.youtube.com/watch?v=3_l8Czgivqw' },
+          { image: 'assets/temaver.png', text: 'Doritoz - Tem a ver', link: 'https://www.youtube.com/watch?v=ufuXcytH0OU' },
+        ];
+        const isMobile = window.innerWidth <= 768;
         const app = new App(container, {
           items: myProjects,
           bend: 0, 
           textColor: '#ffffff',
           borderRadius: 0.05,
-          font: '900 120px "Inter Tight", sans-serif', // Aumentado para 120px
+          font: isMobile ? '900 60px "Inter Tight", sans-serif' : '900 120px "Inter Tight", sans-serif',
           scrollSpeed: 2.5,
           scrollEase: 0.05
         });
-        // Força resize explícito após init para garantir dimensões corretas
         app.onResize();
       }));
     });
