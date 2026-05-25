@@ -2,12 +2,12 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <link rel="icon" type="image/jpeg" href="assets/favicon.jpg" />
   
-  <title>leomacedo.mp4 | Creative Editor & Motion Graphics</title>
-  <meta name="description" content="Portfolio de Leo Macedo - Edição de vídeo, Motion Graphics e VFX." />
+  <title>Box leomacedo.mp4 | O Arsenal Completo de Edição</title>
+  <meta name="description" content="O método e os assets secretos de Leo Macedo para Edição de vídeo e Motion Graphics de alto impacto." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -55,14 +55,13 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       position: relative;
-      width: 100vw;
     }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
     /* ============================================
-       INTER TIGHT
+       INTER TIGHT — HEADINGS, LABELS, BUTTONS
     ============================================ */
     h1, h2, h3, h4, h5, h6,
     .hero-eyebrow,
@@ -72,7 +71,6 @@
       font-family: 'Inter Tight', 'Inter', system-ui, sans-serif;
     }
 
-    /* ── SCROLLBAR ──────────────────────────────────────── */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--red); }
@@ -112,7 +110,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 100vw;
       z-index: 1000;
       background: rgba(17, 17, 17, 0.85);
       backdrop-filter: blur(12px);
@@ -139,22 +137,30 @@
       display: inline-block;
       padding: 0.65rem 1.5rem;
       border-radius: 6px;
-      font-weight: 700;
+      font-weight: 900;
       font-size: 0.9rem;
       cursor: pointer;
       transition: all 0.2s ease;
       border: none;
       text-align: center;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
     .btn-red { background: var(--red); color: var(--white); }
     .btn-red:hover { background: var(--red-dark); transform: translateY(-1px); }
     .btn-lg { padding: 1rem 2.2rem; font-size: 1.05rem; border-radius: 8px; }
-    .btn-xl { padding: 1.1rem 2.6rem; font-size: 1.1rem; border-radius: 8px; }
+    .btn-xl { padding: 1.2rem 2.8rem; font-size: 1.2rem; border-radius: 8px; }
 
-    /* ── MOBILE MENU TOGGLE ─────────────────────────────── */
+    .pulse-btn {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(192, 38, 211, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(192, 38, 211, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(192, 38, 211, 0); }
+    }
+
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -170,7 +176,7 @@
     .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background: var(--red); }
 
     .mobile-nav-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: rgba(17, 17, 17, 0.98); z-index: 999;
       display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
@@ -179,20 +185,18 @@
     .mobile-nav-overlay.active { opacity: 1; pointer-events: all; }
     .mobile-nav-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 40px; }
     .mobile-nav-links a {
-      color: #fff; font-family: 'Inter Tight', sans-serif; font-size: 2.5rem; 
+      color: #fff; font-family: 'Inter Tight', sans-serif; font-size: 3rem; 
       font-weight: 900; text-transform: uppercase; transition: 0.3s;
     }
-    .mobile-nav-links a:hover { color: var(--red); }
 
     /* ============================================
-       HERO
+       HERO (VSL STYLE)
     ============================================ */
     .hero {
-      padding: 8rem 1.5rem 4rem;
+      padding: 9rem 2rem 5rem;
       text-align: center;
       position: relative;
       overflow: hidden;
-      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -204,15 +208,14 @@
       top: -100px;
       left: 50%;
       transform: translateX(-50%);
-      width: 100%;
-      max-width: 800px;
+      width: 800px;
       height: 600px;
       background: radial-gradient(ellipse, rgba(192, 38, 211, 0.15) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
 
-    .hero-inner { width: 100%; max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
+    .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
 
     .hero-eyebrow {
       display: inline-block;
@@ -225,60 +228,58 @@
       text-transform: uppercase;
       padding: 0.4rem 1rem;
       border-radius: 100px;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero-headline {
-      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 900;
-      line-height: 1.1;
+      line-height: 1.05;
       letter-spacing: -0.03em;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
       text-transform: uppercase;
     }
 
     .hero-headline .highlight { color: var(--red); }
 
     .hero-sub {
-      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+      font-size: clamp(1rem, 2vw, 1.2rem);
       color: var(--grey-light);
       max-width: 640px;
-      margin: 0 auto 2.4rem;
+      margin: 0 auto 2rem;
       line-height: 1.7;
     }
 
-    .hero-cta-group { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-
-    .hero-social-proof { 
-      display: flex; 
-      flex-wrap: wrap;
-      justify-content: center; 
-      align-items: center; 
-      gap: 1rem; 
-      font-family: var(--font-code);
-      font-size: 0.75rem;
-      color: var(--grey);
-      margin-top: 2.5rem;
-      text-transform: uppercase;
+    .video-vsl {
+      max-width: 700px; 
+      margin: 0 auto 2.5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(192, 38, 211, 0.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(192, 38, 211, 0.2);
+      background: #000;
+      position: relative;
     }
     
-    .hero-social-proof .dot {
-      width: 4px;
-      height: 4px;
-      background-color: var(--red);
-      border-radius: 50%;
-      display: inline-block;
+    .video-vsl video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      outline: none;
     }
+
+    .hero-cta-group { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
 
     /* ============================================
        SECTION UTILITY
     ============================================ */
-    .section { padding: 5rem 1.5rem; position: relative; z-index: 2; }
+    .section { padding: 6rem 2rem; position: relative; z-index: 2; }
     .section-alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .section-inner { max-width: 1400px; margin: 0 auto; width: 100%; }
-    .section-inner-narrow { max-width: 1100px; margin: 0 auto; width: 100%; }
+    .section-inner { max-width: 1400px; margin: 0 auto; }
+    .section-inner-narrow { max-width: 1100px; margin: 0 auto; }
 
-    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
 
     .section-label {
       font-size: 0.8rem;
@@ -291,7 +292,7 @@
     }
 
     .section-title {
-      font-size: clamp(2rem, 6vw, 4.5rem);
+      font-size: clamp(2.2rem, 4vw, 4rem);
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1.1;
@@ -300,25 +301,24 @@
     }
     
     .section-title .highlight { color: var(--red); }
-
-    .section-sub { font-size: 1rem; color: var(--grey-light); line-height: 1.6; max-width: 600px; margin: 0 auto; }
+    .section-sub { font-size: 1.1rem; color: var(--grey-light); line-height: 1.7; max-width: 600px; margin: 0 auto; }
 
     /* ============================================
-       WHAT YOU GET (SERVICES)
+       WHAT YOU GET (THE BOX)
     ============================================ */
     .deliverables-grid { 
       display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
       gap: 1.5rem; 
-      margin-top: 3rem; 
+      margin-top: 2rem; 
     }
 
     .deliverable-card {
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 2rem 1.5rem;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      padding: 2.5rem 2rem;
+      transition: border-color 0.2s ease, transform 0.2s ease; 
       display: flex;
       flex-direction: column;
       height: 100%; 
@@ -330,60 +330,33 @@
     }
 
     .deliverable-icon {
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       background: rgba(192, 38, 211, 0.1);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
       flex-shrink: 0;
     }
 
-    .deliverable-icon i { color: var(--red); font-size: 1.2rem; }
-    .deliverable-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: -0.02em; }
-    .deliverable-desc { 
-      font-size: 0.9rem; color: var(--grey-light); line-height: 1.6; 
-      flex-grow: 1; 
-    }
+    .deliverable-icon i { color: var(--red); font-size: 1.3rem; }
+    .deliverable-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: -0.02em; }
+    .deliverable-desc { font-size: 0.95rem; color: var(--grey-light); line-height: 1.6; flex-grow: 1; }
 
     /* ============================================
-       SPECS GRID
+       WEBGL GALLERY (SOCIAL PROOF)
     ============================================ */
-    .specs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-      gap: 1.5rem;
-      margin-top: 3rem;
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-    }
-    
-    .spec-item { display: flex; flex-direction: column; gap: 0.4rem; }
-    
-    .spec-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--grey);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    
-    .spec-label i { color: var(--red); }
-    .spec-value { font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white); line-height: 1.3; }
-
-    /* ── WEBGL CIRCULAR GALLERY ─────────────────────────── */
     .gallery-wrapper {
       width: 100vw;
       position: relative;
       left: 50%;
-      transform: translateX(-50%);
-      height: 60dvh;
-      min-height: 450px;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      height: 80vh;
+      min-height: 600px;
       background: transparent;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -394,87 +367,118 @@
       height: 100%;
       overflow: hidden;
       cursor: grab;
-      touch-action: pan-y; /* Permite rolagem nativa vertical no mobile */
     }
     .circular-gallery:active { cursor: grabbing; }
     .circular-gallery canvas { display: block; width: 100%; height: 100%; }
 
     /* ============================================
-       PITCH VIDEO SECTION
+       OFFER SECTION
     ============================================ */
-    #pitch-video { background: #050505; border-top: 1px solid var(--border); }
-    .pitch-header { text-align: center; margin-bottom: 2rem; }
-    .pitch-eyebrow { font-family: 'Inter Tight', sans-serif; color: var(--grey-light); font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
-    .pitch-title { font-family: 'Inter Tight', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--red); text-transform: uppercase; letter-spacing: 1px; }
-    
-    .video-container {
-      width: 100%;
-      max-width: 600px; /* Video liberado para se adaptar com sanidade */
-      margin: 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
+    .offer-box {
+      background: rgba(192, 38, 211, 0.03);
       border: 1px solid rgba(192, 38, 211, 0.3);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(192, 38, 211, 0.1);
-      background: #000;
-    }
-    .video-container video { width: 100%; height: auto; display: block; border-radius: 12px; outline: none; }
-    
-    .pitch-footer-text { text-align: center; color: var(--grey-light); font-size: 0.9rem; max-width: 600px; margin: 2rem auto 0; line-height: 1.6; }
-
-    /* ============================================
-       FOOTER CTA
-    ============================================ */
-    .footer-cta {
-      background: #0a0a0a;
-      padding: 6rem 1.5rem;
+      border-radius: 16px;
+      padding: 4rem 2rem;
       text-align: center;
-      border-top: 1px solid var(--border);
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 0 60px rgba(192, 38, 211, 0.05);
       position: relative;
-      overflow: hidden;
       z-index: 2;
     }
 
-    .footer-cta::before {
+    .offer-price-old {
+      text-decoration: line-through;
+      color: var(--grey);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .offer-price-new {
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--white);
+      font-family: 'Inter Tight', sans-serif;
+      margin: 0.2rem 0;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .offer-price-new span {
+      font-size: 1.5rem;
+      color: var(--red);
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .offer-box::before {
       content: '';
       position: absolute;
-      bottom: -200px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       width: 100%;
-      max-width: 700px;
-      height: 400px;
-      background: radial-gradient(ellipse, rgba(192, 38, 211, 0.15) 0%, transparent 65%);
+      height: 100%;
+      background: radial-gradient(circle, rgba(192,38,211,0.1) 0%, transparent 80%);
       pointer-events: none;
+      z-index: -1;
     }
-
-    .footer-cta-inner { max-width: 700px; margin: 0 auto; position: relative; }
-    .footer-cta .section-sub { margin-bottom: 2rem; }
-
-    .footer-legal {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-
-    .footer-legal p { font-size: 0.75rem; color: #555; line-height: 1.6; }
 
     /* ============================================
-       RESPONSIVE overrides
+       FAQ
+    ============================================ */
+    .faq-container { max-width: 750px; margin: 0 auto; text-align: left; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+    }
+    .faq-question {
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--red); }
+    .faq-answer {
+      margin-top: 1rem;
+      color: var(--grey-light);
+      display: none;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* ============================================
+       FOOTER
+    ============================================ */
+    .footer-legal {
+      padding: 3rem 2rem;
+      text-align: center;
+      background: #050505;
+      border-top: 1px solid var(--border);
+    }
+    .footer-legal p { font-size: 0.8rem; color: #555; line-height: 1.6; }
+
+    /* ============================================
+       RESPONSIVE
     ============================================ */
     @media (max-width: 992px) {
       .nav-links { display: none; }
       .menu-toggle { display: flex; }
+      .gallery-wrapper { height: 55vh; min-height: 400px; }
     }
 
     @media (max-width: 768px) {
-      nav { padding: 0 1.5rem; height: 70px; }
-      .logo-wordmark { font-size: 1.3rem; }
-      .btn-xl { padding: 1rem 2rem; font-size: 1rem; width: 100%; }
-      .hero-cta-group { width: 100%; max-width: 300px; margin: 0 auto; }
+      .section { padding: 4rem 1.2rem; }
+      nav { padding: 0 5%; height: 80px; }
+      
+      .hero-headline { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+      .offer-price-new { font-size: 3rem; }
+      
+      .deliverables-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .deliverable-card { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
@@ -491,9 +495,9 @@
       </a>
       
       <ul class="nav-links">
-        <li><a href="#work" class="scroll-link">WORK</a></li>
-        <li><a href="#about" class="scroll-link">SYSTEM</a></li>
-        <li><a href="#contact" class="scroll-link">GET IN TOUCH</a></li>
+        <li><a href="#metodo" class="scroll-link">O ARSENAL</a></li>
+        <li><a href="#work" class="scroll-link">RESULTADOS</a></li>
+        <li><a href="#oferta" class="btn btn-red" style="padding: 0.5rem 1.2rem; font-size: 0.8rem;">GARANTIR VAGA</a></li>
       </ul>
 
       <div class="menu-toggle" id="mobile-menu-btn">
@@ -506,36 +510,61 @@
 
   <div class="mobile-nav-overlay" id="mobile-nav">
     <ul class="mobile-nav-links">
-      <li><a href="#work" class="scroll-link">WORK</a></li>
-      <li><a href="#about" class="scroll-link">SYSTEM</a></li>
-      <li><a href="#contact" class="scroll-link">GET IN TOUCH</a></li>
+      <li><a href="#metodo" class="scroll-link">O ARSENAL</a></li>
+      <li><a href="#work" class="scroll-link">RESULTADOS</a></li>
+      <li><a href="#oferta" class="scroll-link" style="color: var(--red);">GARANTIR VAGA</a></li>
     </ul>
   </div>
 
   <main>
     <section class="hero" id="hero">
       <div class="hero-inner">
-        <span class="hero-eyebrow">The Creative Edge &mdash; System Online</span>
+        <span class="hero-eyebrow">Assista ao vídeo antes de rolar a página</span>
         <h1 class="hero-headline">
-          HIGH IMPACT<br />
-          <span class="highlight">VIDEO EDITING</span><br />
-          & MOTION GRAPHICS.
+          O ARSENAL SECRETO DAS<br />
+          <span class="highlight">EDIÇÕES QUE FATURAM</span>
         </h1>
         <p class="hero-sub">
-          Leveling up visual storytelling through technical chaos. Advanced VFX, 3D Compositing, and fluid animations designed to demand attention.
+          Copie e cole os exatos presets, transições e efeitos de Motion que eu uso para criar vídeos de alto impacto em tempo recorde.
         </p>
-        <div class="hero-cta-group">
-          <a href="#work" class="btn btn-red btn-xl scroll-link">SEE RECENT OPERATIONS &rarr;</a>
-        </div>
         
-        <div class="hero-social-proof">
-          <span>VFX & COMP</span>
-          <span class="dot"></span>
-          <span>MOTION DESIGN</span>
-          <span class="dot"></span>
-          <span>COLOR GRADING</span>
-          <span class="dot"></span>
-          <span>SOUND DESIGN</span>
+        <div class="video-vsl">
+          <video src="videos/apresentando.mp4" controls preload="metadata"></video>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="#oferta" class="btn btn-red btn-xl pulse-btn scroll-link">QUERO LIBERAR MEU ACESSO AGORA &rarr;</a>
+          <p style="margin-top: 10px; font-size: 0.8rem; color: var(--grey);"><i class="fa-solid fa-shield-halved"></i> Compra 100% Segura e Imediata</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="metodo">
+      <div class="section-inner-narrow">
+        <div class="section-header">
+          <div class="section-label">Por dentro do sistema</div>
+          <h2 class="section-title">O QUE VOCÊ LEVA <span class="highlight">HOJE</span></h2>
+          <p class="section-sub">Acabe com a tela em branco. Tenha na mão o arsenal que separa os amadores dos editores high-ticket.</p>
+        </div>
+
+        <div class="deliverables-grid">
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="deliverable-title">PACK VFX & COMP</div>
+            <div class="deliverable-desc">Meus presets blindados de Sapphire, Deep Glow e Twixtor. Importe pro seu software e tenha visuais cinematográficos num clique.</div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="deliverable-title">MOTION SETUP</div>
+            <div class="deliverable-desc">Projetos abertos (AEP) com animações de tipografia, transições fluidas e integrações 3D já mapeadas. Só trocar o texto e exportar.</div>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fa-solid fa-film"></i></div>
+            <div class="deliverable-title">LUTs & SFX PREMIUM</div>
+            <div class="deliverable-desc">O color grading agressivo e o sound design imersivo que vão explodir a retenção dos teus projetos.</div>
+          </div>
         </div>
       </div>
     </section>
@@ -543,9 +572,9 @@
     <section class="section section-alt" id="work" style="padding-bottom: 0;">
       <div class="section-inner-narrow">
         <div class="section-header">
-          <div class="section-label">Recent Operations</div>
-          <h2 class="section-title">Selected <span class="highlight">Projects</span></h2>
-          <p class="section-sub">Drag or swipe to explore the latest edits and visual experiments.</p>
+          <div class="section-label">Prova Social</div>
+          <h2 class="section-title">O SEU NOVO <span class="highlight">PADRÃO</span></h2>
+          <p class="section-sub">Arraste para o lado e veja o nível estúpido de qualidade que você vai conseguir replicar aplicando a Box.</p>
         </div>
       </div>
       
@@ -554,136 +583,101 @@
       </div>
     </section>
 
-    <section class="section" id="about">
+    <section class="section" id="oferta">
       <div class="section-inner-narrow">
-        <div class="section-header">
-          <div class="section-label">Tech Stack</div>
-          <h2 class="section-title">Technical <span class="highlight">Power</span></h2>
-          <p class="section-sub">Real tools for real results. No shortcuts.</p>
-        </div>
-
-        <div class="deliverables-grid">
-          <div class="deliverable-card">
-            <div class="deliverable-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-            <div class="deliverable-title">VFX & COMP</div>
-            <div class="deliverable-desc">Advanced use of Sapphire, Deep Glow, and Twixtor. Crafting visuals that completely transform the raw footage.</div>
+        <div class="offer-box">
+          <div class="section-label">Condição Especial Limitada</div>
+          <h2 class="section-title" style="margin-bottom: 0;">GARANTA A <span class="highlight">BOX</span></h2>
+          <p class="section-sub" style="margin-top: 1rem;">O investimento que se paga no seu próximo job fechado.</p>
+          
+          <div style="margin: 2.5rem 0;">
+            <p class="offer-price-old">De R$ 297,00</p>
+            <p class="offer-price-new"><span>12x de</span> R$ 9,70</p>
+            <p style="color: var(--grey-light); font-weight: 500;">ou R$ 97,00 à vista no PIX</p>
           </div>
 
-          <div class="deliverable-card">
-            <div class="deliverable-icon"><i class="fa-solid fa-layer-group"></i></div>
-            <div class="deliverable-title">MOTION DESIGN</div>
-            <div class="deliverable-desc">Fluid, high-impact animations. From complex 2D typography scaling to seamless 3D scene integration.</div>
-          </div>
-
-          <div class="deliverable-card">
-            <div class="deliverable-icon"><i class="fa-solid fa-film"></i></div>
-            <div class="deliverable-title">POST PRODUCTION</div>
-            <div class="deliverable-desc">Professional color grading and aggressive sound design to elevate every frame of the project.</div>
+          <a href="#" class="btn btn-red btn-xl pulse-btn" style="width: 100%; display: block; font-size: 1.2rem;">QUERO ENTRAR PRO SISTEMA</a>
+          
+          <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; color: var(--grey); font-size: 0.85rem; font-weight: 700;">
+            <span><i class="fa-solid fa-lock"></i> Acesso Imediato</span>
+            <span><i class="fa-solid fa-rotate-left"></i> 7 Dias de Garantia</span>
           </div>
         </div>
-
-        <div class="specs-grid">
-          <div class="spec-item">
-            <span class="spec-label"><i class="fa-solid fa-microchip"></i> Hardware</span>
-            <span class="spec-value">System OK</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label"><i class="fa-solid fa-laptop-code"></i> Software</span>
-            <span class="spec-value">AfterEffects, Premiere, CapCut, Photoshop</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label"><i class="fa-solid fa-location-dot"></i> From</span>
-            <span class="spec-value">Bahia, BRAZIL</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label"><i class="fa-solid fa-wifi"></i> Status</span>
-            <span class="spec-value">Available for Projects</span>
-          </div>
-        </div>
-        
       </div>
     </section>
 
-    <section class="section" id="pitch-video">
+    <section class="section section-alt" id="faq">
       <div class="section-inner-narrow">
-        <div class="pitch-header">
-          <span class="pitch-eyebrow">Before you move on, watch this.</span>
-          <h2 class="pitch-title">THE <span class="highlight">METHOD</span> — WATCH THIS FIRST</h2>
+        <div class="section-header" style="margin-bottom: 2.5rem;">
+          <h2 class="section-title" style="font-size: 2.5rem;">PERGUNTAS <span class="highlight">FREQUENTES</span></h2>
         </div>
         
-        <div class="video-container">
-          <video src="videos/apresentando.mp4" controls preload="metadata"></video>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
+              Funciona no Premiere ou CapCut? <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Sim! Grande parte do arsenal, como LUTs, Sound Effects e Overlays em vídeo, funciona nativamente em qualquer software. Os projetos abertos são focados no After Effects.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
+              Como vou receber o meu acesso? <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Assim que o pagamento for aprovado (Pix ou Cartão é na hora), você receberá um e-mail automático com o link da plataforma/drive para baixar tudo imediatamente.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
+              E se eu não gostar? <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Você tem 7 dias de garantia incondicional. Se achar que o arsenal não elevou o nível da sua edição, devolvemos cada centavo sem burocracia.</div>
+          </div>
         </div>
-        
-        <p class="pitch-footer-text">
-          This is the brutal presentation of how the magic happens. Watch the video until the end to understand the scheme before getting in touch.
-        </p>
       </div>
     </section>
 
-    <section class="footer-cta" id="contact">
-      <div class="footer-cta-inner">
-        <div class="section-label">Connect</div>
-        <h2 class="section-title">
-          Ready to <span class="highlight">create?</span>
-        </h2>
-        <p class="section-sub">
-          Drop me an email to discuss projects, rates, and availability. Let's make something that breaks the mold.
-        </p>
-        <a href="mailto:contato@leomacedo.design" class="btn btn-red btn-xl">SEND ME AN EMAIL &rarr;</a>
-      </div>
-
-      <div class="footer-legal">
-        <p>
-          &copy; 2026 LEO MACEDO. DESIGNED FOR IMPACT.<br>
-          ALL RIGHTS RESERVED.
-        </p>
-      </div>
-    </section>
+    <footer class="footer-legal">
+      <p>
+        &copy; 2026 LEO MACEDO. DESIGNED FOR CONVERSION.<br>
+        Este site não faz parte da Meta Inc. ou Facebook. Todos os direitos reservados.
+      </p>
+    </footer>
   </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
 
-      gsap.from('.hero-headline', { y: 40, opacity: 0, duration: 1, ease: 'power4.out', delay: 0.2 });
-      gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.4 });
-      gsap.from('.hero-cta-group', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.6 });
-      gsap.from('.hero-social-proof', { opacity: 0, y: 15, duration: 1, ease: 'power3.out', delay: 0.8 });
+      // Hero animations adaptadas pra LP
+      gsap.from('.hero-headline', { y: 40, opacity: 0, duration: 1, ease: 'power4.out', delay: 0.1 });
+      gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.3 });
+      gsap.from('.video-vsl', { opacity: 0, y: 30, duration: 1, ease: 'power3.out', delay: 0.5 });
+      gsap.from('.hero-cta-group', { opacity: 0, y: 15, duration: 1, ease: 'power3.out', delay: 0.8 });
 
+      // Animação genérica pras seções
       gsap.utils.toArray('section').forEach(section => {
-        if(section.id !== 'hero' && section.id !== 'pitch-video') {
-          const targets = section.querySelectorAll('.section-header *, .footer-cta-inner *');
+        if(section.id !== 'hero') {
+          const targets = section.querySelectorAll('.section-header *, .offer-box');
           if (targets.length > 0) {
             gsap.from(targets, {
-              scrollTrigger: { trigger: section, start: 'top 85%' },
-              y: 20, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
+              scrollTrigger: { trigger: section, start: 'top 80%' },
+              y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
             });
           }
         }
       });
 
       gsap.from('.gallery-wrapper', {
-        scrollTrigger: { trigger: '#work', start: 'top 75%' },
-        y: 40, opacity: 0, duration: 1, ease: 'power3.out'
+        scrollTrigger: { trigger: '#work', start: 'top 70%' },
+        y: 60, opacity: 0, duration: 1.2, ease: 'power3.out'
       });
       
       gsap.from('.deliverable-card', {
-        scrollTrigger: { trigger: '#about', start: 'top 80%' },
-        y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
+        scrollTrigger: { trigger: '#metodo', start: 'top 75%' },
+        y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
         clearProps: 'all'
       });
-      
-      gsap.from('.spec-item', {
-        scrollTrigger: { trigger: '.specs-grid', start: 'top 90%' },
-        y: 15, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
-      });
 
-      gsap.from('.video-container', {
-        scrollTrigger: { trigger: '#pitch-video', start: 'top 80%' },
-        y: 30, opacity: 0, duration: 1, ease: 'power3.out'
-      });
-
+      // MOBILE MENU LOGIC
       const menuBtn = document.getElementById('mobile-menu-btn');
       const mobileNav = document.getElementById('mobile-nav');
 
@@ -691,27 +685,23 @@
         menuBtn.addEventListener('click', () => {
           menuBtn.classList.toggle('active');
           mobileNav.classList.toggle('active');
-          document.body.style.overflow = menuBtn.classList.contains('active') ? 'hidden' : '';
         });
       }
 
+      // SMOOTH SCROLL
       document.querySelectorAll('.scroll-link').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault(); 
-          
           if(menuBtn.classList.contains('active')) {
             menuBtn.classList.remove('active');
             mobileNav.classList.remove('active');
-            document.body.style.overflow = '';
           }
-          
           const targetId = this.getAttribute('href');
           if (targetId === '#') return;
           const targetSection = document.querySelector(targetId);
-          const headerHeight = window.innerWidth <= 768 ? 70 : 90;
-          
+          const headerHeight = window.innerWidth <= 768 ? 80 : 100;
           if (targetSection) {
-            let offsetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+            let offsetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
             window.scrollTo({ top: offsetPosition, behavior: "smooth" });
           }
         });
@@ -737,7 +727,9 @@
       };
     }
 
-    function lerp(p1, p2, t) { return p1 + (p2 - p1) * t; }
+    function lerp(p1, p2, t) {
+      return p1 + (p2 - p1) * t;
+    }
 
     function autoBind(instance) {
       const proto = Object.getPrototypeOf(instance);
@@ -754,21 +746,17 @@
       const sizeMatch = font.match(/\d+/);
       const fontSize = sizeMatch ? parseInt(sizeMatch[0], 10) : 30;
       const textHeight = Math.ceil(fontSize * 1.2);
-      
       context.font = font;
       const metrics = context.measureText(text);
       const textWidth = Math.ceil(metrics.width);
-      
       canvas.width = textWidth + 20;
       canvas.height = textHeight + 20;
-      
       context.font = font;
       context.fillStyle = color;
       context.textBaseline = 'middle';
       context.textAlign = 'center';
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.fillText(text, canvas.width / 2, canvas.height / 2);
-      
       const texture = new Texture(gl, { generateMipmaps: false });
       texture.image = canvas;
       return { texture, width: canvas.width, height: canvas.height };
@@ -842,7 +830,11 @@
         this.borderRadius = borderRadius;
         this.font = font;
         
-        this.texture = new Texture(this.gl, { generateMipmaps: false, minFilter: this.gl.LINEAR, magFilter: this.gl.LINEAR });
+        this.texture = new Texture(this.gl, { 
+            generateMipmaps: false,
+            minFilter: this.gl.LINEAR,
+            magFilter: this.gl.LINEAR
+        });
 
         this.createShader();
         this.createMesh();
@@ -892,15 +884,15 @@
                     min((1.0 / planeAspect) / (1.0 / imageAspect), 1.0)
                   );
               }
-              
-              vec2 uv = vec2(vUv.x * ratio.x + (1.0 - ratio.x) * 0.5, vUv.y * ratio.y + (1.0 - ratio.y) * 0.5);
+              vec2 uv = vec2(
+                vUv.x * ratio.x + (1.0 - ratio.x) * 0.5,
+                vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
+              );
               vec4 color = texture2D(tMap, uv); 
-              
               float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
               float edgeSmooth = 0.002;
               float alpha = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
-              if (uImageSizes.x == 0.0) alpha = 0.0;
-              
+              if (uImageSizes.x == 0.0) { alpha = 0.0; }
               gl_FragColor = vec4(color.rgb, color.a * alpha);
             }
           `,
@@ -929,7 +921,10 @@
         this.plane.setParent(this.scene);
       }
       createTitle() {
-        this.title = new Title({ gl: this.gl, plane: this.plane, renderer: this.renderer, text: this.text, textColor: this.textColor, font: this.font });
+        this.title = new Title({
+          gl: this.gl, plane: this.plane, renderer: this.renderer,
+          text: this.text, textColor: this.textColor, font: this.font
+        });
       }
       update(scroll, direction) {
         this.plane.position.x = this.x - scroll.current - this.extra;
@@ -982,24 +977,22 @@
           }
         }
         this.scale = this.screen.height / 1500;
+        
         const isMobile = window.innerWidth <= 768;
-        const baseWidth = isMobile ? 1200 : 3000;
+        const baseWidth = isMobile ? 900 : 3000
         this.plane.scale.x = (this.viewport.width * (baseWidth * this.scale)) / this.screen.width;
         this.plane.scale.y = this.plane.scale.x * (9 / 16); 
-
         this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
         
         if (this.title && this.title.mesh) {
-          const tamanhoTextoY = isMobile ? 0.35 : 0.80; 
-          const espacamento = isMobile ? -0.15 : -0.25; 
+          const tamanhoTextoY = isMobile ? 0.25 : 0.80; 
+          const espacamento = -0.25; 
           const aspect = this.title.baseWidth / this.title.baseHeight;
           const scaleY = tamanhoTextoY;
           const scaleX = scaleY * aspect * (9 / 16); 
-          
           this.title.mesh.scale.set(scaleX, scaleY, 1);
           this.title.mesh.position.y = 0.5 + (scaleY * 0.5) + espacamento;
         }
-
         this.padding = this.plane.scale.x * (isMobile ? 0.15 : 0.1); 
         this.width = this.plane.scale.x + this.padding;
         this.widthTotal = this.width * this.length;
@@ -1042,9 +1035,10 @@
         this.mediasImages = items.concat(items); 
         this.medias = this.mediasImages.map((data, index) => {
           return new Media({
-            geometry: this.planeGeometry, gl: this.gl, image: data.image, index, length: this.mediasImages.length,
-            renderer: this.renderer, scene: this.scene, screen: this.screen, text: data.text, link: data.link,
-            viewport: this.viewport, bend, textColor, borderRadius, font
+            geometry: this.planeGeometry, gl: this.gl, image: data.image, index,
+            length: this.mediasImages.length, renderer: this.renderer, scene: this.scene,
+            screen: this.screen, text: data.text, link: data.link, viewport: this.viewport,
+            bend, textColor, borderRadius, font
           });
         });
       }
@@ -1057,12 +1051,6 @@
       onTouchMove(e) {
         if (!this.isDown) return;
         const x = e.touches ? e.touches[0].clientX : e.clientX;
-        const y = e.touches ? e.touches[0].clientY : e.clientY;
-        const moveX = Math.abs(x - this.start);
-        const moveY = Math.abs(y - this.startY);
-
-        if (moveX > moveY && e.cancelable) e.preventDefault(); 
-        
         const distance = (this.start - x) * (this.scrollSpeed * 0.025);
         this.scroll.target = this.scroll.position + distance;
       }
@@ -1070,19 +1058,21 @@
         this.isDown = false;
         const x = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
         const y = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+        const moveX = Math.abs(x - this.start);
+        const moveY = Math.abs(y - this.startY);
 
-        if (Math.abs(x - this.start) < 5 && Math.abs(y - this.startY) < 5) {
+        if (moveX < 5 && moveY < 5) {
           const rect = this.gl.canvas.getBoundingClientRect();
           const mouseX = ((x - rect.left) / rect.width) * 2 - 1;
           const mouseY = -((y - rect.top) / rect.height) * 2 + 1;
-          
           this.mouse.set(mouseX, mouseY);
           this.raycast.castMouse(this.camera, this.mouse);
-          
-          const hits = this.raycast.intersectBounds(this.medias.map(m => m.plane));
+          const meshes = this.medias.map(m => m.plane);
+          const hits = this.raycast.intersectBounds(meshes);
           if (hits.length > 0) {
-            const clickedMedia = this.medias.find(m => m.plane === hits[0]);
-            if (clickedMedia && clickedMedia.link) window.open(clickedMedia.link, '_blank');
+            const hitMesh = hits[0];
+            const clickedMedia = this.medias.find(m => m.plane === hitMesh);
+            if (clickedMedia && clickedMedia.link) { window.open(clickedMedia.link, '_blank'); }
           }
         }
         this.onCheck();
@@ -1095,7 +1085,8 @@
       onCheck() {
         if (!this.medias || !this.medias[0]) return;
         const width = this.medias[0].width;
-        const item = width * Math.round(Math.abs(this.scroll.target) / width);
+        const itemIndex = Math.round(Math.abs(this.scroll.target) / width);
+        const item = width * itemIndex;
         this.scroll.target = this.scroll.target < 0 ? -item : item;
       }
       onResize() {
@@ -1104,13 +1095,14 @@
         this.camera.perspective({ aspect: this.screen.width / this.screen.height });
         const fov = (this.camera.fov * Math.PI) / 180;
         const height = 2 * Math.tan(fov / 2) * this.camera.position.z;
-        this.viewport = { width: height * this.camera.aspect, height };
-        if (this.medias) this.medias.forEach(media => media.onResize({ screen: this.screen, viewport: this.viewport }));
+        const width = height * this.camera.aspect;
+        this.viewport = { width, height };
+        if (this.medias) { this.medias.forEach(media => media.onResize({ screen: this.screen, viewport: this.viewport })); }
       }
       update() {
         this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
         const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
-        if (this.medias) this.medias.forEach(media => media.update(this.scroll, direction));
+        if (this.medias) { this.medias.forEach(media => media.update(this.scroll, direction)); }
         this.renderer.render({ scene: this.scene, camera: this.camera });
         this.scroll.last = this.scroll.current;
         this.raf = window.requestAnimationFrame(this.update.bind(this));
@@ -1127,7 +1119,7 @@
         this.gl.canvas.addEventListener('mousemove', this.boundOnTouchMove);
         window.addEventListener('mouseup', this.boundOnTouchUp);
         this.gl.canvas.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
-        this.gl.canvas.addEventListener('touchmove', this.boundOnTouchMove, { passive: false }); 
+        this.gl.canvas.addEventListener('touchmove', this.boundOnTouchMove, { passive: true });
         window.addEventListener('touchend', this.boundOnTouchUp);
       }
     }
@@ -1135,22 +1127,22 @@
     window.addEventListener('load', () => {
       const container = document.getElementById('circular-gallery');
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        const myProjects = [
-          { image: 'assets/airbnb.png', text: 'Hyo - Airbnb', link: 'https://www.youtube.com/watch?v=LJbFmxFRlDs' },
-          { image: 'assets/encruzilhada.png', text: 'Zinnz - Encruzilhada', link: 'https://www.youtube.com/watch?v=MirhuBalAeg' },
-          { image: 'assets/falsa.png', text: 'Zinnz - Falsa', link: 'https://www.youtube.com/watch?v=J0DLgvq7MxE' },
-          { image: 'assets/minhamente.png', text: 'MateusXavier - Minhamente', link: 'https://www.youtube.com/watch?v=0zZKwwBSiME' },
-          { image: 'assets/querubim.png', text: 'Hyo - Querubim', link: 'https://www.youtube.com/watch?v=tVFf_r0V468' },
-          { image: 'assets/roubanoplayboy.png', text: 'MateusXavier - Roubano Playboy', link: 'https://www.youtube.com/watch?v=3_l8Czgivqw' },
-          { image: 'assets/temaver.png', text: 'Doritoz - Tem a ver', link: 'https://www.youtube.com/watch?v=ufuXcytH0OU' },
-        ];
-        const isMobile = window.innerWidth <= 768;
+      const myProjects = [
+        { image: 'assets/airbnb.png', text: 'Hyo - Airbnb', link: 'https://www.youtube.com/watch?v=LJbFmxFRlDs' },
+        { image: 'assets/encruzilhada.png', text: 'Zinnz - Encruzilhada', link: 'https://www.youtube.com/watch?v=MirhuBalAeg' },
+        { image: 'assets/falsa.png', text: 'Zinnz - Falsa', link: 'https://www.youtube.com/watch?v=J0DLgvq7MxE' },
+        { image: 'assets/minhamente.png', text: 'MateusXavier - Minhamente', link: 'https://www.youtube.com/watch?v=0zZKwwBSiME' },
+        { image: 'assets/querubim.png', text: 'Hyo - Querubim', link: 'https://www.youtube.com/watch?v=tVFf_r0V468' },
+        { image: 'assets/roubanoplayboy.png', text: 'MateusXavier - Roubano Playboy', link: 'https://www.youtube.com/watch?v=3_l8Czgivqw' },
+        { image: 'assets/temaver.png', text: 'Doritoz - Tem a ver', link: 'https://www.youtube.com/watch?v=ufuXcytH0OU' },
+      ];
+
         const app = new App(container, {
           items: myProjects,
           bend: 0, 
           textColor: '#ffffff',
           borderRadius: 0.05,
-          font: isMobile ? '900 60px "Inter Tight", sans-serif' : '900 120px "Inter Tight", sans-serif',
+          font: '900 120px "Inter Tight", sans-serif',
           scrollSpeed: 2.5,
           scrollEase: 0.05
         });
