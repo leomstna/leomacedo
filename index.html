@@ -58,6 +58,12 @@
       position: relative;
     }
 
+    /* Otimização de Performance CSS */
+    .gsap-target {
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
@@ -86,8 +92,10 @@
       position: fixed;
       top: 0; left: 0; width: 100vw; z-index: 1000;
       background: rgba(17, 17, 17, 0.7);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(12px); /* Reduzido levemente para melhor performance */
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+      transform: translateZ(0); /* Força hardware acceleration */
     }
 
     .nav-inner {
@@ -99,23 +107,22 @@
       justify-content: space-between;
     }
 
-    /* ESTILO DA LOGO NOVA */
     .brand-logo {
       display: flex;
       align-items: center;
       z-index: 1001;
     }
     .brand-logo img {
-      height: 45px; /* Ajuste o tamanho da logo aqui */
+      height: 45px;
       width: auto;
       object-fit: contain;
-      filter: invert(1); /* Inverte a cor para branco se a imagem original for preta */
+      filter: invert(1);
     }
 
     .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
     .nav-links a.scroll-link { 
       color: #fff; font-weight: 600; text-transform: uppercase; 
-      font-size: 0.85rem; letter-spacing: 2px; transition: color 0.3s;
+      font-size: 0.85rem; letter-spacing: 2px; transition: color 0.3s ease-out;
     }
     .nav-links a.scroll-link:hover { color: var(--red); }
 
@@ -126,11 +133,12 @@
       font-weight: 800;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.2s ease-out;
       border: none;
       text-align: center;
       letter-spacing: 0.05em;
       text-transform: uppercase;
+      will-change: transform, box-shadow;
     }
 
     .btn-red { background: var(--red); color: var(--white); }
@@ -143,7 +151,7 @@
       display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001;
     }
     .menu-toggle span {
-      width: 30px; height: 2px; background: #fff; transition: 0.3s ease;
+      width: 30px; height: 2px; background: #fff; transition: 0.3s ease-out;
     }
     .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); background: var(--red); }
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
@@ -153,14 +161,14 @@
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: rgba(17, 17, 17, 0.98); z-index: 999;
       display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease-out;
       backdrop-filter: blur(15px);
     }
     .mobile-nav-overlay.active { opacity: 1; pointer-events: all; }
     .mobile-nav-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 40px; }
     .mobile-nav-links a {
       color: #fff; font-family: var(--font-serif); font-size: 3rem; 
-      font-weight: 900; text-transform: uppercase; transition: 0.3s;
+      font-weight: 900; text-transform: uppercase; transition: 0.3s ease-out;
     }
     .mobile-nav-links a:hover { color: var(--red); text-shadow: 0 0 20px rgba(192, 38, 211, 0.5); }
 
@@ -259,14 +267,15 @@
       gap: 1.5rem; margin-top: 3rem; 
     }
     .deliverable-card {
-      background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem 2rem;
-      transition: all 0.3s ease; display: flex; flex-direction: column;
+      transition: all 0.3s ease-out; display: flex; flex-direction: column;
       height: 100%; position: relative; overflow: hidden;
+      will-change: transform, border-color, box-shadow;
     }
     .deliverable-card::before {
       content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-      background: var(--red); opacity: 0; transition: 0.3s ease; box-shadow: 0 0 10px var(--red);
+      background: var(--red); opacity: 0; transition: 0.3s ease-out; box-shadow: 0 0 10px var(--red);
     }
     .deliverable-card:hover { 
       border-color: rgba(192, 38, 211, 0.4); transform: translateY(-5px); 
@@ -304,6 +313,7 @@
       width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
       height: 80vh; min-height: 600px; background: transparent; border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border); overflow: hidden;
+      transform: translateZ(0); /* Força composição acelerada de GPU */
     }
     .circular-gallery { width: 100%; height: 100%; overflow: hidden; cursor: grab; }
     .circular-gallery:active { cursor: grabbing; }
@@ -359,7 +369,7 @@
     @media (max-width: 768px) {
       .section { padding: 4rem 1rem; }
       nav { padding: 0 5%; height: 70px; }
-      .brand-logo img { height: 35px; } /* Logo um pouco menor no mobile */
+      .brand-logo img { height: 35px; } 
       
       .hero-headline { font-size: clamp(2.5rem, 12vw, 4rem); line-height: 1; }
       .script-text { font-size: clamp(2rem, 8vw, 3rem); top: -0.8em; left: 5%; }
@@ -377,7 +387,7 @@
   <nav>
     <div class="nav-inner">
       <a href="#" class="brand-logo" aria-label="leomacedo.mp4">
-        <img src="leomacedo.png" alt="leomacedo.mp4" />
+        <img src="leomacedo.png" alt="leomacedo.mp4" decoding="async" />
       </a>
       
       <ul class="nav-links">
@@ -404,20 +414,20 @@
     <section class="hero" id="hero">
       <div id="darkveil-container"></div>
       <div class="hero-inner">
-        <span class="hero-eyebrow">The Creative Edge &mdash; System Online</span>
-        <div class="hero-headline-container">
+        <span class="hero-eyebrow gsap-target">The Creative Edge &mdash; System Online</span>
+        <div class="hero-headline-container gsap-target">
           <span class="script-text">High Impact</span>
           <h1 class="hero-headline">
             <span class="highlight">VIDEO EDITING</span><br />& MOTION.
           </h1>
         </div>
-        <p class="hero-sub">
+        <p class="hero-sub gsap-target">
           Leveling up visual storytelling through technical chaos. Advanced VFX, 3D Compositing, and fluid animations designed to demand attention.
         </p>
-        <div class="hero-cta-group">
+        <div class="hero-cta-group gsap-target">
           <a href="#work" class="btn btn-red btn-xl scroll-link">SEE RECENT OPERATIONS &rarr;</a>
         </div>
-        <div class="hero-social-proof">
+        <div class="hero-social-proof gsap-target">
           <span>VFX & COMP</span><span class="dot"></span>
           <span>MOTION DESIGN</span><span class="dot"></span>
           <span>COLOR GRADING</span><span class="dot"></span>
@@ -434,7 +444,7 @@
           <p class="section-sub">Drag or swipe to explore the latest edits and visual experiments.</p>
         </div>
       </div>
-      <div class="gallery-wrapper">
+      <div class="gallery-wrapper gsap-target">
         <div id="circular-gallery" class="circular-gallery"></div>
       </div>
     </section>
@@ -448,17 +458,17 @@
         </div>
 
         <div class="deliverables-grid">
-          <div class="deliverable-card">
+          <div class="deliverable-card gsap-target">
             <div class="deliverable-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
             <div class="deliverable-title">VFX & COMP</div>
             <div class="deliverable-desc">Advanced use of Sapphire, Deep Glow, and Twixtor. Crafting visuals that completely transform the raw footage.</div>
           </div>
-          <div class="deliverable-card">
+          <div class="deliverable-card gsap-target">
             <div class="deliverable-icon"><i class="fa-solid fa-layer-group"></i></div>
             <div class="deliverable-title">MOTION DESIGN</div>
             <div class="deliverable-desc">Fluid, high-impact animations. From complex 2D typography scaling to seamless 3D scene integration.</div>
           </div>
-          <div class="deliverable-card">
+          <div class="deliverable-card gsap-target">
             <div class="deliverable-icon"><i class="fa-solid fa-film"></i></div>
             <div class="deliverable-title">POST PRODUCTION</div>
             <div class="deliverable-desc">Professional color grading and aggressive sound design to elevate every frame of the project.</div>
@@ -466,10 +476,10 @@
         </div>
 
         <div class="specs-grid">
-          <div class="spec-item"><span class="spec-label"><i class="fa-solid fa-microchip"></i> Hardware</span><span class="spec-value">System OK</span></div>
-          <div class="spec-item"><span class="spec-label"><i class="fa-solid fa-laptop-code"></i> Software</span><span class="spec-value">AfterEffects, Premiere, CapCut, Photoshop</span></div>
-          <div class="spec-item"><span class="spec-label"><i class="fa-solid fa-location-dot"></i> From</span><span class="spec-value">Bahia, BRAZIL</span></div>
-          <div class="spec-item"><span class="spec-label"><i class="fa-solid fa-wifi"></i> Status</span><span class="spec-value">Available for Projects</span></div>
+          <div class="spec-item gsap-target"><span class="spec-label"><i class="fa-solid fa-microchip"></i> Hardware</span><span class="spec-value">System OK</span></div>
+          <div class="spec-item gsap-target"><span class="spec-label"><i class="fa-solid fa-laptop-code"></i> Software</span><span class="spec-value">AfterEffects, Premiere, CapCut, Photoshop</span></div>
+          <div class="spec-item gsap-target"><span class="spec-label"><i class="fa-solid fa-location-dot"></i> From</span><span class="spec-value">Bahia, BRAZIL</span></div>
+          <div class="spec-item gsap-target"><span class="spec-label"><i class="fa-solid fa-wifi"></i> Status</span><span class="spec-value">Available for Projects</span></div>
         </div>
       </div>
     </section>
@@ -480,8 +490,8 @@
           <span class="pitch-eyebrow">Before you move on, watch this.</span>
           <h2 class="pitch-title">THE <span class="highlight">METHOD</span> — WATCH THIS FIRST</h2>
         </div>
-        <div class="video-container">
-          <video src="videos/apresentando.mp4" controls preload="metadata"></video>
+        <div class="video-container gsap-target">
+          <video src="videos/apresentando.mp4" controls preload="none" poster="poster_apresentando.jpg"></video>
         </div>
         <p class="pitch-footer-text">
           This is the brutal presentation of how the magic happens. Watch the video until the end to understand the scheme before getting in touch.
@@ -496,7 +506,7 @@
         <p class="section-sub" style="margin-bottom: 2rem;">
           Send me a message so we can discuss projects, pricing, and availability. Let's create something innovative.
         </p>
-        <a href="https://www.instagram.com/leomacedo.mp4" target="_blank" class="btn btn-red btn-xl">SEND ME A DM &rarr;</a>
+        <a href="https://www.instagram.com/leomacedo.mp4" target="_blank" rel="noopener noreferrer" class="btn btn-red btn-xl">SEND ME A DM &rarr;</a>
       </div>
       <div class="footer-legal">
         <p>&copy; 2026 LEO MACEDO. DESIGNED FOR IMPACT.<br>ALL RIGHTS RESERVED.</p>
@@ -507,25 +517,27 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
+      // Config geral do GSAP para performance
+      gsap.config({ force3D: true });
 
-      gsap.from('.hero-headline-container', { y: 60, opacity: 0, duration: 1, ease: 'power4.out', delay: 0.2 });
-      gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.6 });
-      gsap.from('.hero-cta-group', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.8 });
-      gsap.from('.hero-social-proof', { opacity: 0, y: 15, duration: 1, ease: 'power3.out', delay: 1 });
+      gsap.from('.hero-headline-container', { y: 60, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
+      gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.4 });
+      gsap.from('.hero-cta-group', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.6 });
+      gsap.from('.hero-social-proof', { opacity: 0, y: 15, duration: 1, ease: 'power3.out', delay: 0.8 });
 
       gsap.utils.toArray('section').forEach(section => {
         if(section.id !== 'hero' && section.id !== 'pitch-video') {
           const targets = section.querySelectorAll('.section-header *, .footer-cta-inner *');
           if (targets.length > 0) {
-            gsap.from(targets, { scrollTrigger: { trigger: section, start: 'top 95%' }, y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', clearProps: 'all' });
+            gsap.from(targets, { scrollTrigger: { trigger: section, start: 'top 90%' }, y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out', clearProps: 'all' });
           }
         }
       });
 
-      gsap.from('.gallery-wrapper', { scrollTrigger: { trigger: '#work', start: 'top 70%' }, y: 60, opacity: 0, duration: 1.2, ease: 'power3.out' });
-      gsap.from('.deliverable-card', { scrollTrigger: { trigger: '#about', start: 'top 75%' }, y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out', clearProps: 'all' });
-      gsap.from('.spec-item', { scrollTrigger: { trigger: '.specs-grid', start: 'top 85%' }, y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' });
-      gsap.from('.video-container', { scrollTrigger: { trigger: '#pitch-video', start: 'top 75%' }, y: 50, opacity: 0, duration: 1, ease: 'power3.out' });
+      gsap.from('.gallery-wrapper', { scrollTrigger: { trigger: '#work', start: 'top 75%' }, y: 60, opacity: 0, duration: 1, ease: 'power2.out', clearProps: 'all' });
+      gsap.from('.deliverable-card', { scrollTrigger: { trigger: '#about', start: 'top 80%' }, y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out', clearProps: 'all' });
+      gsap.from('.spec-item', { scrollTrigger: { trigger: '.specs-grid', start: 'top 85%' }, y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', clearProps: 'all' });
+      gsap.from('.video-container', { scrollTrigger: { trigger: '#pitch-video', start: 'top 80%' }, y: 50, opacity: 0, duration: 1, ease: 'power2.out', clearProps: 'all' });
 
       const menuBtn = document.getElementById('mobile-menu-btn');
       const mobileNav = document.getElementById('mobile-nav');
@@ -590,6 +602,7 @@
     vec3 hueShiftRGB(vec3 col,float deg){ vec3 yiq=rgb2yiq*col; float rad=radians(deg); float cosh=cos(rad),sinh=sin(rad); vec3 yiqShift=vec3(yiq.x,yiq.y*cosh-yiq.z*sinh,yiq.y*sinh+yiq.z*cosh); return clamp(yiq2rgb*yiqShift,0.0,1.0); }
     vec4 sigmoid(vec4 x){return 1./(1.+exp(-x));}
 
+    // Shader original mantido, mas com precisão lowp nas versões móveis pelo cabeçalho
     vec4 cppn_fn(vec2 coordinate,float in0,float in1,float in2){
         buf[6]=vec4(coordinate.x,coordinate.y,0.3948333106474662+in0,0.36+in1);
         buf[7]=vec4(0.14+in2,sqrt(coordinate.x*coordinate.x+coordinate.y*coordinate.y),0.,0.);
@@ -625,6 +638,7 @@
     function initDarkVeil(containerId) {
       const container = document.getElementById(containerId);
       if (!container) return;
+      
       const renderer = new Renderer({ alpha: true, dpr: Math.min(window.devicePixelRatio, 2) });
       const gl = renderer.gl; container.appendChild(gl.canvas);
       Object.assign(gl.canvas.style, { width: '100%', height: '100%', display: 'block' });
@@ -645,10 +659,20 @@
       };
       window.addEventListener('resize', resize); resize();
 
+      // OPTIMIZATION: Intersection Observer so we don't render when off-screen
+      let isVisible = true;
+      const observer = new IntersectionObserver((entries) => {
+        isVisible = entries[0].isIntersecting;
+      }, { threshold: 0.1 });
+      observer.observe(document.getElementById('hero'));
+
       const start = performance.now();
       const loop = () => {
-        program.uniforms.uTime.value = ((performance.now() - start) / 1000) * 0.5;
-        renderer.render({ scene: mesh }); requestAnimationFrame(loop);
+        if (isVisible) {
+          program.uniforms.uTime.value = ((performance.now() - start) / 1000) * 0.5;
+          renderer.render({ scene: mesh }); 
+        }
+        requestAnimationFrame(loop);
       };
       loop();
     }
@@ -715,6 +739,7 @@
           uniforms: { tMap: { value: this.texture }, uPlaneSizes: { value: [0, 0] }, uImageSizes: { value: [0, 0] }, uSpeed: { value: 0 }, uTime: { value: 100 * Math.random() }, uBorderRadius: { value: this.borderRadius } }, transparent: true
         });
         const img = new Image(); img.crossOrigin = 'anonymous'; 
+        img.decoding = "async"; // Otimização de carregamento de imagem
         img.onload = () => { this.texture.image = img; this.texture.needsUpdate = true; this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight]; };
         img.src = this.image;
       }
@@ -759,12 +784,20 @@
         this.createRenderer(); this.createCamera(); this.createScene();
         this.raycast = new Raycast(this.gl); this.mouse = new Vec2();
         this.onResize(); this.createGeometry(); this.createMedias(items, bend, textColor, borderRadius, font);
+        
+        // OPTIMIZATION: Intersection Observer
+        this.isVisible = true;
+        const observer = new IntersectionObserver((entries) => {
+          this.isVisible = entries[0].isIntersecting;
+        }, { threshold: 0.1 });
+        observer.observe(this.container);
+
         this.update(); this.addEventListeners();
       }
       createRenderer() { this.renderer = new Renderer({ alpha: true, antialias: true, dpr: Math.min(window.devicePixelRatio || 1, 2) }); this.gl = this.renderer.gl; this.gl.clearColor(0, 0, 0, 0); this.container.appendChild(this.gl.canvas); }
       createCamera() { this.camera = new Camera(this.gl); this.camera.fov = 45; this.camera.position.z = 20; }
       createScene() { this.scene = new Transform(); }
-      createGeometry() { this.planeGeometry = new Plane(this.gl, { heightSegments: 50, widthSegments: 100 }); }
+      createGeometry() { this.planeGeometry = new Plane(this.gl, { heightSegments: 1, widthSegments: 1 }); } // OTIMIZADO: segmentos reduzidos (não há warp nesse plane)
       createMedias(items, bend = 1, textColor, borderRadius, font) {
         this.mediasImages = items.concat(items); 
         this.medias = this.mediasImages.map((data, index) => { return new Media({ geometry: this.planeGeometry, gl: this.gl, image: data.image, index, length: this.mediasImages.length, renderer: this.renderer, scene: this.scene, screen: this.screen, text: data.text, link: data.link, viewport: this.viewport, bend, textColor, borderRadius, font }); });
@@ -790,9 +823,12 @@
         if (this.medias) { this.medias.forEach(media => media.onResize({ screen: this.screen, viewport: this.viewport })); }
       }
       update() {
-        this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease); const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
-        if (this.medias) { this.medias.forEach(media => media.update(this.scroll, direction)); }
-        this.renderer.render({ scene: this.scene, camera: this.camera }); this.scroll.last = this.scroll.current; this.raf = window.requestAnimationFrame(this.update.bind(this));
+        if (this.isVisible) {
+          this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease); const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
+          if (this.medias) { this.medias.forEach(media => media.update(this.scroll, direction)); }
+          this.renderer.render({ scene: this.scene, camera: this.camera }); this.scroll.last = this.scroll.current; 
+        }
+        this.raf = window.requestAnimationFrame(this.update.bind(this));
       }
       addEventListeners() {
         this.boundOnResize = this.onResize.bind(this); this.boundOnWheel = this.onWheel.bind(this); this.boundOnTouchDown = this.onTouchDown.bind(this); this.boundOnTouchMove = this.onTouchMove.bind(this); this.boundOnTouchUp = this.onTouchUp.bind(this);
