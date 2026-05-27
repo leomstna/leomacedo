@@ -988,7 +988,7 @@
         // AQUI FOI AJUSTADO O TITULO (MUDANÇA DO ESPAÇAMENTO PRA VALORES POSITIVOS)
         if (this.title && this.title.mesh) {
           const tamanhoTextoY = isMobile ? 0.25 : 0.80; 
-          const espacamento = isMobile ? 0.15 : 0.10; // Positivo faz o texto subir pra cima da thumb
+          const espacamento = isMobile ? 0.15 : - 0.20; // Positivo faz o texto subir pra cima da thumb
           const aspect = this.title.baseWidth / this.title.baseHeight;
           const scaleY = tamanhoTextoY; const scaleX = scaleY * aspect * (9 / 16); 
           this.title.mesh.scale.set(scaleX, scaleY, 1); 
